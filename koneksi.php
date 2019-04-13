@@ -1,6 +1,6 @@
 <?php
 	
-	$conn=new mysqli('localhost','root','','favorit');
+	$conn=new mysqli('localhost','root','','catering');
 
 	if (!$conn) {
 		echo "koneksi gagal";
