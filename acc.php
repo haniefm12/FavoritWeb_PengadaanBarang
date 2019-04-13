@@ -52,7 +52,7 @@
 				<li><a><span>Hi <?php echo $hello ?>!</span></a></li>
 			</ul>
 			<header>
-				<h1> <span>GUDANG FAVORIT</span></h1>	
+				<h1> <span>Approval</span></h1>	
             </header> 
 		</div><!-- /container -->
 		<script src="assets/GoogleNexusWebsiteMenu/js/classie.js"></script>
