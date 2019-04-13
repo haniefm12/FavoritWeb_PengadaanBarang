@@ -29,7 +29,7 @@
 			$result= mysqli_fetch_array($query);
 			$hello = $result[0];
 		}
-	?>
+?>
 		<div class="container">
 			<ul id="gn-menu" class="gn-menu-main">
 				<li class="gn-trigger">
@@ -53,48 +53,60 @@
 			</ul>
 			<header>
 				<h1> <span>Supplier</span></h1>	
-            </header>
+			</header> 
 			<div>
-			 <h2><span>Supplier</span></h2>
-			 <form>
-         		<button type="submit" formaction="tambah_supplier.php">Tambah Supplier</button>
-      		</form> 
-			 <br>
-			 <h3>Daftar Supplier</h3>
-			 <table class="table">				
-				<thead class="thead-dark">
+				<h2>Tambah Supplier</h2>
+			<form method="POST" enctype="multipart/form-data">
+				<table align="left" border="1">
 					<tr>
-						<th scope="col">Nama Supplier</th>
-						<th scope="col">e-Mail</th>
-						<th scope="col">Alamat</th>
-						<th scope="col">Nomor Telepon</th>
-						<th scope="col">Sisa Tagihan</th>
+						<td>Nama Supplier</td>
+						<td><input type="text" name="nama_supplier" required=""></td>
 					</tr>
-				</thead>
-			<?php
-   
-    			$sql= "SELECT * FROM suppliers";
-				$query= mysqli_query($conn,$sql);
-   
-				while ($hsl= mysqli_fetch_assoc($query)){
-			?>
-			
-				<tr>
-	    			<th scope ="row"><?php echo $hsl['nama_supplier'];?></th>
-					<td><?php echo $hsl['email'];?></td>
-					<td><?php echo $hsl['alamat'];?></td>
-					<td><?php echo $hsl['no_hp'];?></td>
-					<td><?php echo $hsl['sisa_tagihan'];?></td>
-				</tr>
-			<?php		
-				}
-			?>	
-			</table>
-			<br>
-			<br>
-			
-			 
-			</div> 
+					<tr>
+						<td>E-mail</td>
+						<td><input type="email" name="email"></td>
+					</tr>
+					<tr>
+						<td>Alamat</td>			
+						<td><textarea name="alamat"></textarea></td>
+					</tr>
+					<tr>
+						<td>Nomor Telepon</td>			
+						<td><input type="text" name="telp"></td>
+					</tr>
+					<tr>
+						<input type="submit" name="submit" value="Submit">
+					</tr>
+				</table>
+			</form>
+<?php
+
+	if (isset($_POST['submit'])) {
+		include 'koneksi_model.php';
+
+		$nama=$_POST['nama_supplier'];
+		$email=$_POST['email'];
+		$alamat=$_POST['alamat'];
+		$telp=$_POST['telp'];
+		$sisa=0;
+		
+
+		$sql= "INSERT INTO `suppliers`(`nama_supplier`,`email`,`alamat`,`no_hp`,`sisa_tagihan`)
+				VALUES ('$nama','$email','$alamat','$telp','$sisa')";
+		mysqli_query($conn,$sql);
+		?> 
+		<div class="alert">
+  		<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  		<strong>Sukses!</strong>
+		</div>
+<?php
+	}
+?>
+	
+				<form>
+         		<button type="submit" formaction="supplier.php">Lihat Daftar Supplier</button>
+      			</form>
+			</div>
 		</div><!-- /container -->
 		<script src="assets/GoogleNexusWebsiteMenu/js/classie.js"></script>
 		<script src="assets/GoogleNexusWebsiteMenu/js/gnmenu.js"></script>
