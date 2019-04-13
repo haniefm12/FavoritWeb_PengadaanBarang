@@ -17,6 +17,19 @@
 		<script src="assets/GoogleNexusWebsiteMenu/js/modernizr.custom.js"></script>
 	</head>
 	<body>
+	<?php
+	include 'koneksi_model.php';
+	session_start();
+	if (!isset($_SESSION["sukses"]) and !isset($_SESSION["username"]) and !isset($_SESSION["password"])) {
+		die("silahkan login <a href='login_page.php'>disini</a>");
+	}else
+		{
+			$sql= "SELECT nama FROM user WHERE username='".$_SESSION["username"]."'";
+			$query= mysqli_query($conn,$sql);
+			$result= mysqli_fetch_array($query);
+			$hello = $result[0];
+		}
+?>
 		<div class="container">
 			<ul id="gn-menu" class="gn-menu-main">
 				<li class="gn-trigger">
@@ -36,15 +49,14 @@
 								<li><br>
 								<br>
 								<br>
-								<br>
 								<br></li>
-								<li><a class="gn-icon gn-icon-cog">Logout</a></li>
+								<li><a class="gn-icon gn-icon-cog" href='logout.php'>Logout</a></li>
 							</ul>
 						</div><!-- /gn-scroller -->
 					</nav>
 				</li>
-				<li><a>Favorite</a></li>
-				<li><a><span>Admin</span></a></li>
+				<li><a href='mainMenu.php'>Favorite</a></li>
+				<li><a><span>Hi <?php echo $hello ?></span></a></li>
 			</ul>
 			<header>
 				<h1> <span>GUDANG FAVORIT</span></h1>	
@@ -55,9 +67,6 @@
 		<script>
 			new gnMenu( document.getElementById( 'gn-menu' ) );
 		</script>
-<?php
-	
-		
-?>
-	</body>
+
+</body>
 </html>
