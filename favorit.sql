@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2019 at 12:44 PM
+-- Generation Time: Apr 13, 2019 at 09:04 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -37,6 +37,13 @@ CREATE TABLE `account_recievable` (
   `total_tagihan` int(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `account_recievable`
+--
+
+INSERT INTO `account_recievable` (`tanggal`, `id_debts`, `supplier`, `status`, `sisa_tagihan`, `total_tagihan`) VALUES
+('2019-04-13', 1, 'Sindu', 0, 200, 200);
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +56,14 @@ CREATE TABLE `approval` (
   `sum_demand` int(20) NOT NULL,
   `approve` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `approval`
+--
+
+INSERT INTO `approval` (`id_approve`, `id_demand`, `sum_demand`, `approve`) VALUES
+(1, 1, 200, 0),
+(2, 2, 200, 1);
 
 -- --------------------------------------------------------
 
@@ -66,6 +81,13 @@ CREATE TABLE `product` (
   `harga_jual` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`id_item`, `id_supplier`, `nama_item`, `jumlah_item`, `satuan`, `harga_satuan`, `harga_jual`) VALUES
+(1, 1234, 'kertas', 1, 'lembar', 100, 150);
+
 -- --------------------------------------------------------
 
 --
@@ -79,6 +101,14 @@ CREATE TABLE `purchase_order` (
   `qty_demand` int(10) NOT NULL,
   `sum_demand` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `purchase_order`
+--
+
+INSERT INTO `purchase_order` (`id_demand`, `nama_supplier`, `nama_item`, `qty_demand`, `sum_demand`) VALUES
+(1, 'Sindu', 'kertas', 2, 200),
+(2, 'Sindu', 'kertas', 2, 200);
 
 -- --------------------------------------------------------
 
@@ -94,6 +124,18 @@ CREATE TABLE `suppliers` (
   `no_hp` int(14) DEFAULT NULL,
   `sisa_tagihan` int(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `suppliers`
+--
+
+INSERT INTO `suppliers` (`id_supplier`, `nama_supplier`, `email`, `alamat`, `no_hp`, `sisa_tagihan`) VALUES
+(1234, 'Sindu', 'sindu@mail.com', 'bandung', 812678556, 1),
+(1235, 'Gramed', 'gramed@mail', 'ciwastra', 595795, 0),
+(1236, 'App', 'aap@mail.com', 'utara', 832592375, 0),
+(1242, 'App', '', '', 0, 0),
+(1243, 'App', '', '', 0, 0),
+(1244, 'sda', '', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -164,31 +206,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `account_recievable`
 --
 ALTER TABLE `account_recievable`
-  MODIFY `id_debts` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_debts` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `approval`
 --
 ALTER TABLE `approval`
-  MODIFY `id_approve` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_approve` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_item` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_item` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `purchase_order`
 --
 ALTER TABLE `purchase_order`
-  MODIFY `id_demand` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_demand` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `id_supplier` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_supplier` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1245;
 
 --
 -- AUTO_INCREMENT for table `user`
