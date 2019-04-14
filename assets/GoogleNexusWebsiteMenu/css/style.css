@@ -11,7 +11,7 @@
 }
 
 body {
-	background: #34495e;
+	background: #d9f1ff;
 }
 
 .container > header,
@@ -20,7 +20,9 @@ body {
 	font-family: 'Lato', Arial, sans-serif;
 }
 
-
+.container > header{
+	padding-top: 100px;
+}
 .container > header a {
 	color: #566473;
 	text-decoration: none;
@@ -122,7 +124,6 @@ body {
 }
 
 @media screen and (max-width: 1025px) {
-	
 }
 
 @media screen and (max-width: 740px) {

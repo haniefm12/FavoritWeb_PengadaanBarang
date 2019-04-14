@@ -1,0 +1,10 @@
+.table td, .table th{
+	border-top: 1px solid black;
+}
+.head {
+	z-index: 1;
+}
+.head button {
+	float:right;
+	margin-bottom: 5px;
+}

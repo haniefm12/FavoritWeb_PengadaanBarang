@@ -5,8 +5,11 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <title>Favorit</title>
+        <link rel="stylesheet" href="assets/bootstrap-4.3.1-dist/css/bootstrap-grid.css"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 		<meta name="description" content="A sidebar menu as seen on the Google Nexus 7 website" />
 		<meta name="keywords" content="google nexus 7 menu, css transitions, sidebar, side menu, slide out menu" />
 		<meta name="author" content="Codrops" />
@@ -15,6 +18,7 @@
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/component.css" />
 		<script src="assets/GoogleNexusWebsiteMenu/js/modernizr.custom.js"></script>
+		<link rel="stylesheet" type="text/css" href="assets/css/form.css" />
 	</head>
 	<body>
 	<?php
@@ -54,18 +58,16 @@
 			<header>
 				<h1> <span>Supplier</span></h1>	
 			</header> 
-			<div>
-				<h2>Tambah Supplier</h2>
-			<form method="POST" enctype="multipart/form-data">
-				<table align="left" border="1">
+			<h2 style="text-align: center">Tambah Supplier</h2>
+			<div style="display:block; text-align: center">
+				
+			<form class="mainform" method="POST" enctype="multipart/form-data">
+				<table align="left" border="0">
 					<tr>
-						<td>Nama Supplier</td>
-						<td><input type="text" name="nama_supplier" required=""></td>
+						<td><input placeholder="Nama" type="text" name="nama_supplier" required=""></td>
+						<td><input placeholder="E-mail" type="email" name="email"></td>
 					</tr>
-					<tr>
-						<td>E-mail</td>
-						<td><input type="email" name="email"></td>
-					</tr>
+						
 					<tr>
 						<td>Alamat</td>			
 						<td><textarea name="alamat"></textarea></td>
@@ -74,10 +76,10 @@
 						<td>Nomor Telepon</td>			
 						<td><input type="text" name="telp"></td>
 					</tr>
-					<tr>
-						<input type="submit" name="submit" value="Submit">
-					</tr>
 				</table>
+				<br>
+				<input type="submit" name="submit" value="Submit">
+				<button type="submit" formaction="supplier.php">Lihat Daftar Supplier</button>
 			</form>
 <?php
 
@@ -103,9 +105,6 @@
 	}
 ?>
 	
-				<form>
-         		<button type="submit" formaction="supplier.php">Lihat Daftar Supplier</button>
-      			</form>
 			</div>
 		</div><!-- /container -->
 		<script src="assets/GoogleNexusWebsiteMenu/js/classie.js"></script>
