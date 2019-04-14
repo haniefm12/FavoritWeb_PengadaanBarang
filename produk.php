@@ -53,7 +53,50 @@
 			</ul>
 			<header>
 				<h1> <span>Product</span></h1>	
-            </header> 
+			</header> 
+			<div>
+			 <h2><span>Product</span></h2>
+			 <form>
+         		<button type="submit" formaction="order.php">Tambah Product</button>
+      		</form> 
+			 <br>
+			 <h3>Daftar Product</h3>
+			 <table class="table">				
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Id Product</th>
+						<th scope="col">Supplier</th>
+						<th scope="col">Nama Product</th>
+						<th scope="col">Jumlah Item</th>
+						<th scope="col">Satuan</th>
+						<th scope="col">Harga Satuan</th>
+					</tr>
+				</thead>
+			<?php
+   
+    			$sql= "SELECT * FROM product";
+				$query= mysqli_query($conn,$sql);
+   
+				while ($hsl= mysqli_fetch_assoc($query)){
+			?>
+			
+				<tr>
+	    			<th scope ="row"><?php echo $hsl['id_item'];?></th>
+					<td><?php echo $hsl['id_supplier'];?></td>
+					<td><?php echo $hsl['nama_item'];?></td>
+					<td><?php echo $hsl['jumlah_item'];?></td>
+					<td><?php echo $hsl['satuan'];?></td>
+					<td><?php echo $hsl['harga_satuan'];?></td>
+				</tr>
+			<?php		
+				}
+			?>	
+			</table>
+			<br>
+			<br>
+			
+			 
+			</div> 
 		</div><!-- /container -->
 		<script src="assets/GoogleNexusWebsiteMenu/js/classie.js"></script>
 		<script src="assets/GoogleNexusWebsiteMenu/js/gnmenu.js"></script>
