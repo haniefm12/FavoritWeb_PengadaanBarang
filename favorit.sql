@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2019 at 09:04 PM
+-- Generation Time: Apr 14, 2019 at 07:32 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -77,16 +77,17 @@ CREATE TABLE `product` (
   `nama_item` varchar(50) NOT NULL,
   `jumlah_item` int(250) NOT NULL,
   `satuan` varchar(7) NOT NULL,
-  `harga_satuan` int(20) NOT NULL,
-  `harga_jual` int(20) NOT NULL
+  `harga_satuan` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id_item`, `id_supplier`, `nama_item`, `jumlah_item`, `satuan`, `harga_satuan`, `harga_jual`) VALUES
-(1, 1234, 'kertas', 1, 'lembar', 100, 150);
+INSERT INTO `product` (`id_item`, `id_supplier`, `nama_item`, `jumlah_item`, `satuan`, `harga_satuan`) VALUES
+(11, 1235, 'kertas', 1, 'lembar', 100),
+(12, 1234, 'kertas', 2, 'lembar', 100),
+(13, 1236, 'da', 1, 'lembar', 400);
 
 -- --------------------------------------------------------
 
@@ -96,8 +97,7 @@ INSERT INTO `product` (`id_item`, `id_supplier`, `nama_item`, `jumlah_item`, `sa
 
 CREATE TABLE `purchase_order` (
   `id_demand` int(5) NOT NULL,
-  `nama_supplier` varchar(50) NOT NULL,
-  `nama_item` varchar(50) NOT NULL,
+  `id_item` int(5) NOT NULL,
   `qty_demand` int(10) NOT NULL,
   `sum_demand` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -106,9 +106,8 @@ CREATE TABLE `purchase_order` (
 -- Dumping data for table `purchase_order`
 --
 
-INSERT INTO `purchase_order` (`id_demand`, `nama_supplier`, `nama_item`, `qty_demand`, `sum_demand`) VALUES
-(1, 'Sindu', 'kertas', 2, 200),
-(2, 'Sindu', 'kertas', 2, 200);
+INSERT INTO `purchase_order` (`id_demand`, `id_item`, `qty_demand`, `sum_demand`) VALUES
+(3, 11, 2, 200);
 
 -- --------------------------------------------------------
 
@@ -132,10 +131,7 @@ CREATE TABLE `suppliers` (
 INSERT INTO `suppliers` (`id_supplier`, `nama_supplier`, `email`, `alamat`, `no_hp`, `sisa_tagihan`) VALUES
 (1234, 'Sindu', 'sindu@mail.com', 'bandung', 812678556, 1),
 (1235, 'Gramed', 'gramed@mail', 'ciwastra', 595795, 0),
-(1236, 'App', 'aap@mail.com', 'utara', 832592375, 0),
-(1242, 'App', '', '', 0, 0),
-(1243, 'App', '', '', 0, 0),
-(1244, 'sda', '', '', 0, 0);
+(1236, 'App', 'aap@mail.com', 'utara', 832592375, 0);
 
 -- --------------------------------------------------------
 
@@ -178,19 +174,23 @@ ALTER TABLE `approval`
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`id_item`);
+  ADD PRIMARY KEY (`id_item`),
+  ADD UNIQUE KEY `id_item` (`id_item`),
+  ADD KEY `id_supplier` (`id_supplier`);
 
 --
 -- Indexes for table `purchase_order`
 --
 ALTER TABLE `purchase_order`
-  ADD PRIMARY KEY (`id_demand`);
+  ADD PRIMARY KEY (`id_demand`),
+  ADD KEY `id_item` (`id_item`);
 
 --
 -- Indexes for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  ADD PRIMARY KEY (`id_supplier`);
+  ADD PRIMARY KEY (`id_supplier`),
+  ADD KEY `id_supplier` (`id_supplier`);
 
 --
 -- Indexes for table `user`
@@ -218,13 +218,13 @@ ALTER TABLE `approval`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_item` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_item` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `purchase_order`
 --
 ALTER TABLE `purchase_order`
-  MODIFY `id_demand` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_demand` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
@@ -237,6 +237,22 @@ ALTER TABLE `suppliers`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `product`
+--
+ALTER TABLE `product`
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`id_supplier`) REFERENCES `suppliers` (`id_supplier`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `purchase_order`
+--
+ALTER TABLE `purchase_order`
+  ADD CONSTRAINT `purchase_order_ibfk_1` FOREIGN KEY (`id_item`) REFERENCES `product` (`id_item`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

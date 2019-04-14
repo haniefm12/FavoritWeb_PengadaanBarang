@@ -53,7 +53,27 @@
 			</ul>
 			<header>
 				<h1> <span>Purchase Order</span></h1>	
-            </header> 
+			</header> 
+			<div>
+			<form  method="POST">	
+			<input list="browsers" name="browser">
+  					
+			<?php 
+				$sql_s="SELECT id_supplier,nama_supplier FROM suppliers";
+				$query_s= mysqli_query($conn,$sql_s);
+				while ($hsl_s = mysqli_fetch_assoc($query_s)){
+				?>
+				<datalist id="browsers">
+					<option value=<?php echo $hsl_s['id_supplier'];?>>
+				</datalist>
+				<?php
+				}
+				?>
+				
+  					<input type="submit">
+
+			</form>
+			</div>
 		</div><!-- /container -->
 		<script src="assets/GoogleNexusWebsiteMenu/js/classie.js"></script>
 		<script src="assets/GoogleNexusWebsiteMenu/js/gnmenu.js"></script>
