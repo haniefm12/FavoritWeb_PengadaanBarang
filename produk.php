@@ -74,15 +74,15 @@
 				</thead>
 			<?php
    
-    			$sql= "SELECT * FROM product";
+				$sql= "SELECT product.id_item ,product.nama_item, suppliers.nama_supplier, product.harga_satuan, product.satuan, product.jumlah_item FROM product LEFT JOIN suppliers ON product.id_supplier=suppliers.id_supplier";
 				$query= mysqli_query($conn,$sql);
-   
+  
 				while ($hsl= mysqli_fetch_assoc($query)){
 			?>
 			
 				<tr>
 	    			<th scope ="row"><?php echo $hsl['id_item'];?></th>
-					<td><?php echo $hsl['id_supplier'];?></td>
+					<td><?php echo $hsl['nama_supplier'];?></td>
 					<td><?php echo $hsl['nama_item'];?></td>
 					<td><?php echo $hsl['jumlah_item'];?></td>
 					<td><?php echo $hsl['satuan'];?></td>
