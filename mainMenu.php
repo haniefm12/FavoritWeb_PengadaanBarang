@@ -48,7 +48,7 @@
 						</div><!-- /gn-scroller -->
 					</nav>
 				</li>
-				<li><a href='mainMenu.php'>Favorit</a></li>
+				<li><a href='GoogleNexusWebsiteMenu.php'>Favorit</a></li>
 				<li><a><span>Hi <?php echo $hello ?>!</span></a></li>
 			</ul>
 			<header>
