@@ -22,7 +22,7 @@
 				<form action="#" method="post">
 					<input class="text" type="text" name="Username" placeholder="Username" required=""><br>
 					<input class="text" type="password" name="password" placeholder="Password" required=""><br>
-					<input type="submit" value="LOGIN">
+					<input type="submit" name="login" value="LOGIN">
 				</form>
 			</div>
 		</div>
@@ -33,13 +33,17 @@
 	
 	if (isset($_POST['login'])) {
 		session_start();
-		include  'koneksi.php';
+		include  'koneksi_model.php';
 
-		$user=$_POST['username'];
-		$pass=md5($_POST['password']);
+		$user=$_POST['Username'];
+		$pass=($_POST['password']);
 
-		$sql= "SELECT id_akun,username,password FROM akun WHERE username='".$user."'";
+		$sql= "SELECT id_user,username,password FROM user WHERE username='".$user."'";
 		$query= mysqli_query($conn,$sql);
+		#if (!$query) {
+		#	printf("Error: %s\n", mysqli_error($conn));
+		#	exit();
+		#}
 		$result= mysqli_fetch_array($query);
 
 		if (!empty($user || $pass)) {
@@ -48,8 +52,8 @@
 					$_SESSION["sukses"]=1;
 					$_SESSION["username"]=$result[1];
 					$_SESSION["password"]=$result[2];
-					$_SESSION["id_akun"]=$result[0];
-					header("location: rumah.php");
+					$_SESSION["id_user"]=$result[0];
+					header("location: mainMenu.php");
 				}else{
 					echo "Password Salah";
 					}
