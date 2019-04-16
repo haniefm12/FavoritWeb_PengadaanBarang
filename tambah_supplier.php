@@ -18,7 +18,7 @@
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/component.css" />
 		<script src="assets/GoogleNexusWebsiteMenu/js/modernizr.custom.js"></script>
-		<link rel="stylesheet" type="text/css" href="assets/css/form.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/mainform.css" />
 	</head>
 	<body>
 	<?php
@@ -62,24 +62,17 @@
 			<div style="display:block; text-align: center">
 				
 			<form class="mainform" method="POST" enctype="multipart/form-data">
-				<table align="left" border="0">
-					<tr>
-						<td><input placeholder="Nama" type="text" name="nama_supplier" required=""></td>
-						<td><input placeholder="E-mail" type="email" name="email"></td>
-					</tr>
-						
-					<tr>
-						<td>Alamat</td>			
-						<td><textarea name="alamat"></textarea></td>
-					</tr>
-					<tr>
-						<td>Nomor Telepon</td>			
-						<td><input type="text" name="telp"></td>
-					</tr>
-				</table>
+				<input placeholder="Nama" type="text" name="nama_supplier" required="">
+				<input placeholder="E-mail" type="email" name="email">
+				<br>
+				<input style="width:386px" type="text" name="telp" placeholder="Nomor Telepon">
+				<br>
+				<textarea style="width:386px" name="alamat" placeholder="Alamat"></textarea>
 				<br>
 				<input type="submit" name="submit" value="Submit">
 			</form>
+			<br>
+			
 <?php
 
 	if (isset($_POST['submit'])) {
@@ -106,7 +99,6 @@
 	
 			</div>
 
-			<button type="submit" formaction="supplier.php">Lihat Daftar Supplier</button>
 		</div><!-- /container -->
 		<script src="assets/GoogleNexusWebsiteMenu/js/classie.js"></script>
 		<script src="assets/GoogleNexusWebsiteMenu/js/gnmenu.js"></script>
