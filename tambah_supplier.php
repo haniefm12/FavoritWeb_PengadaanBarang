@@ -79,7 +79,6 @@
 				</table>
 				<br>
 				<input type="submit" name="submit" value="Submit">
-				<button type="submit" formaction="supplier.php">Lihat Daftar Supplier</button>
 			</form>
 <?php
 
@@ -106,6 +105,8 @@
 ?>
 	
 			</div>
+
+			<button type="submit" formaction="supplier.php">Lihat Daftar Supplier</button>
 		</div><!-- /container -->
 		<script src="assets/GoogleNexusWebsiteMenu/js/classie.js"></script>
 		<script src="assets/GoogleNexusWebsiteMenu/js/gnmenu.js"></script>
