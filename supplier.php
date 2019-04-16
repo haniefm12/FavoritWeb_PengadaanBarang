@@ -62,8 +62,7 @@
 				<h1> <span>Supplier</span></h1>	
 			</header>
 			<div class="head row">
-				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">
-					
+				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">		
 				</div>
 				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">
 					<form>
@@ -92,11 +91,11 @@
 			?>
 			
 				<tr>
-	    			<th scope ="row"><?php echo $hsl['nama_supplier'];?></th>
-					<td><?php echo $hsl['email'];?></td>
-					<td><?php echo $hsl['alamat'];?></td>
-					<td><?php echo $hsl['no_hp'];?></td>
-					<td><?php echo $hsl['sisa_tagihan'];?></td>
+	    			<th style="background: white" scope ="row"><?php echo $hsl['nama_supplier'];?></th>
+					<td style="background: white"><?php echo $hsl['email'];?></td>
+					<td style="background: white"><?php echo $hsl['alamat'];?></td>
+					<td style="background: white"><?php echo $hsl['no_hp'];?></td>
+					<td style="background: white"><?php echo $hsl['sisa_tagihan'];?></td>
 				</tr>
 			<?php		
 				}

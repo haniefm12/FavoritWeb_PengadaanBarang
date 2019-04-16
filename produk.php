@@ -90,12 +90,12 @@
 			?>
 			
 				<tr>
-	    			<th scope ="row"><?php echo $hsl['id_item'];?></th>
-					<td><?php echo $hsl['nama_supplier'];?></td>
-					<td><?php echo $hsl['nama_item'];?></td>
-					<td><?php echo $hsl['jumlah_item'];?></td>
-					<td><?php echo $hsl['satuan'];?></td>
-					<td><?php echo $hsl['harga_satuan'];?></td>
+	    			<th style="background: white" scope ="row"><?php echo $hsl['id_item'];?></th>
+					<td style="background: white"><?php echo $hsl['nama_supplier'];?></td>
+					<td style="background: white"><?php echo $hsl['nama_item'];?></td>
+					<td style="background: white"><?php echo $hsl['jumlah_item'];?></td>
+					<td style="background: white"><?php echo $hsl['satuan'];?></td>
+					<td style="background: white"><?php echo $hsl['harga_satuan'];?></td>
 				</tr>
 			<?php		
 				}
