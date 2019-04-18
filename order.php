@@ -57,19 +57,19 @@
 			<div>
 			<form  method="POST">	
 			<input list="browsers" name="browser">
-  					
+			<datalist id="browsers">	
 			<?php 
 				$sql_s="SELECT id_supplier,nama_supplier FROM suppliers";
 				$query_s= mysqli_query($conn,$sql_s);
 				while ($hsl_s = mysqli_fetch_assoc($query_s)){
 				?>
-				<datalist id="browsers">
+				
 					<option value=<?php echo $hsl_s['id_supplier'];?>>
-				</datalist>
+				
 				<?php
 				}
 				?>
-				
+				</datalist>
   					<input type="submit">
 
 			</form>
