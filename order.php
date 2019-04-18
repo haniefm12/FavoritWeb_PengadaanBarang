@@ -56,8 +56,8 @@
 			</header> 
 			<div>
 			<form  method="POST">	
-			<input list="browsers" name="browser">
-			<datalist id="browsers">	
+			<input list="suppliers" name="suppliers">
+			<datalist id="suppliers">	
 			<?php 
 				$sql_s="SELECT id_supplier,nama_supplier FROM suppliers";
 				$query_s= mysqli_query($conn,$sql_s);

@@ -18,7 +18,7 @@
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/component.css" />
 		<script src="assets/GoogleNexusWebsiteMenu/js/modernizr.custom.js"></script>
-		<link rel="stylesheet" type="text/css" href="assets/css/table.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/mainform.css" />
 	</head>
 	<body>
 	<?php
@@ -55,57 +55,73 @@
 				<li><a href='mainMenu.php'>Favorit</a></li>
 				<li><a><span>Hi <?php echo $hello ?>!</span></a></li>
 			</ul>
-			
 			<header>
 				<h1> <span>Product</span></h1>	
-			</header>
-			<div class="head row">
-				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">
-					
-				</div>
-				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">
-					<form>
-         				<button type="submit" formaction="tambah_produk.php">Tambah Product</button>
-      				</form>	
-				</div>
+			</header> 
+			<h2 style="text-align: center">Tambah Product</h2>
+			<div style="display:block; text-align: center">
+				
+            <form class="mainform" method="POST" enctype="multipart/form-data">
+                <input list="suppliers" placeholder="Supplier" name="supplier" required="">
+			    <datalist id="suppliers">	
+			    <?php 
+				    $sql_s="SELECT id_supplier,nama_supplier FROM suppliers";
+				    $query_s= mysqli_query($conn,$sql_s);
+				    while ($hsl_s = mysqli_fetch_assoc($query_s)){
+				?>
+				
+					<option value=<?php echo $hsl_s['nama_supplier'];?>>
+				
+				<?php
+				}
+				?>
+				</datalist>
+                <input placeholder="Nama item" type="text" name="nama_item" required="">
+                <br>
+                <input list="satuan"  placeholder="Satuan" name="satuan" required="">
+                <datalist id="satuan">
+                    <option value="Lembar">
+                    <option value="Rim">
+                    <option value="Box">
+                    <option value="Lusin">
+                    <option value="Buah">
+                </datalist>
+				<input type="number" name="harga_satuan" placeholder="Harga Satuan (Rp)">
+				<br>
+				<input type="submit" name="submit" value="Submit">
+			</form>
+			<br>
+			
+<?php
+
+	if (isset($_POST['submit'])) {
+		include 'koneksi_model.php';
+
+		$supplier=$_POST['supplier'];
+		$produk=$_POST['nama_item'];
+		$satuan=$_POST['satuan'];
+		$harga=$_POST['harga_satuan'];
+        $jumlah=0;
+        
+        $sql1="SELECT id_supplier FROM suppliers WHERE nama_supplier='".$supplier."'";
+		$query1= mysqli_query($conn,$sql1);
+		$result1= mysqli_fetch_array($query1);
+		$n_supplier = $result1[0];
+
+		$sql2= "INSERT INTO `product`(`id_supplier`,`nama_item`,`jumlah_item`,`satuan`,`harga_satuan`)
+				VALUES ('$n_supplier','$produk','$jumlah','$satuan','$harga')";
+		mysqli_query($conn,$sql2);
+		?> 
+		<div class="alert">
+  		<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  		<strong>Sukses!</strong>
+		</div>
+<?php
+	}
+?>
+	
 			</div>
 
-			 <table class="table">				
-				<thead class="thead-dark">
-					<tr>
-						<th scope="col">Id Product</th>
-						<th scope="col">Supplier</th>
-						<th scope="col">Nama Product</th>
-						<th scope="col">Jumlah Item</th>
-						<th scope="col">Satuan</th>
-						<th scope="col">Harga Satuan</th>
-					</tr>
-				</thead>
-			<?php
-   
-				$sql= "SELECT product.id_item ,product.nama_item, suppliers.nama_supplier, product.harga_satuan, product.satuan, product.jumlah_item FROM product LEFT JOIN suppliers ON product.id_supplier=suppliers.id_supplier";
-				$query= mysqli_query($conn,$sql);
-  
-				while ($hsl= mysqli_fetch_assoc($query)){
-			?>
-			
-				<tr>
-	    			<th style="background: white" scope ="row"><?php echo $hsl['id_item'];?></th>
-					<td style="background: white"><?php echo $hsl['nama_supplier'];?></td>
-					<td style="background: white"><?php echo $hsl['nama_item'];?></td>
-					<td style="background: white"><?php echo $hsl['jumlah_item'];?></td>
-					<td style="background: white"><?php echo $hsl['satuan'];?></td>
-					<td style="background: white"><?php echo $hsl['harga_satuan'];?></td>
-				</tr>
-			<?php		
-				}
-			?>	
-			</table>
-			<br>
-			<br>
-			
-			 
-			</div> 
 		</div><!-- /container -->
 		<script src="assets/GoogleNexusWebsiteMenu/js/classie.js"></script>
 		<script src="assets/GoogleNexusWebsiteMenu/js/gnmenu.js"></script>
