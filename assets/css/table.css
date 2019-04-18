@@ -1,0 +1,13 @@
+.table td, .table th{
+	border-top: 1px solid black;
+}
+.table .thead-dark td{
+	background: white;
+}
+.head {
+	z-index: 
+}
+.head button {
+	float:right;
+	margin-bottom: 5px;
+}

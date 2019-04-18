@@ -1,0 +1,13 @@
+.mainform {
+	display:inline-block;
+	margin-right: auto;
+	margin-left: auto;
+}
+input, textarea {
+	padding:5px;
+	margin:3px;
+}
+.mainform textarea {
+	resize: none;
+}
+

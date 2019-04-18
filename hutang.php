@@ -12,8 +12,9 @@
 		<meta name="author" content="Codrops" />
 		<link rel="shortcut icon" href="../favicon.ico">
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/normalize.css" />
-		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/component.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/table.css" />
 		<script src="assets/GoogleNexusWebsiteMenu/js/modernizr.custom.js"></script>
 	</head>
 	<body>
@@ -51,9 +52,31 @@
 				<li><a href='mainMenu.php'>Favorit</a></li>
 				<li><a><span>Hi <?php echo $hello ?>!</span></a></li>
 			</ul>
+			<!-- Main Content -->
 			<header>
-				<h1> <span>Account Receivable</span></h1>	
-            </header> 
+				<h1> <span>Account Recievable</span></h1>	
+			</header>
+			<div class="head row">
+				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">		
+				</div>
+				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">
+					<form>
+         				<button type="submit" formaction="tambah_supplier.php">Tambah Supplier</button>
+      				</form>	
+				</div>
+			</div>
+           
+			 
+			 <table class="table">				
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">Tanggal</th>
+						<th scope="col">Supplier</th>
+						<th scope="col">Sisa Tagihan</th>
+						<th scope="col">Total Tagihan</th>
+					</tr>
+				</thead> 
 		</div><!-- /container -->
 		<script src="assets/GoogleNexusWebsiteMenu/js/classie.js"></script>
 		<script src="assets/GoogleNexusWebsiteMenu/js/gnmenu.js"></script>

@@ -12,7 +12,7 @@
 		<meta name="author" content="Codrops" />
 		<link rel="shortcut icon" href="../favicon.ico">
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/normalize.css" />
-		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/component.css" />
 		<script src="assets/GoogleNexusWebsiteMenu/js/modernizr.custom.js"></script>
 	</head>
@@ -48,7 +48,7 @@
 						</div><!-- /gn-scroller -->
 					</nav>
 				</li>
-				<li><a href='GoogleNexusWebsiteMenu.php'>Favorit</a></li>
+				<li><a href='#'>Favorit</a></li>
 				<li><a><span>Hi <?php echo $hello ?>!</span></a></li>
 			</ul>
 			<header>
