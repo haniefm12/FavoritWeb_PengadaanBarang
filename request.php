@@ -38,7 +38,7 @@
 						<div class="gn-scroller">
 							<ul class="gn-menu">
 								<li><a class="gn-icon gn-icon-download" href='hutang.php'>Account Receivable</a></li>
-								<li><a class="gn-icon gn-icon-cog" href='order.php'>Purchase Order</a></li>
+								<li><a class="gn-icon gn-icon-cog" href='Request.php'>Purchase Request</a></li>
 								<li><a class="gn-icon gn-icon-help" href='produk.php'>Product</a></li>
 								<li><a class="gn-icon gn-icon-help" href='supplier.php'>Supplier</a></li>
 								<li><a class="gn-icon gn-icon-help"href='acc.php'>Approval</a></li>
@@ -52,7 +52,7 @@
 				<li><a><span>Hi <?php echo $hello ?>!</span></a></li>
 			</ul>
 			<header>
-				<h1> <span>Purchase Order</span></h1>	
+				<h1> <span>Purchase Request</span></h1>	
 			</header> 
 			<div>
 			<form  method="POST">	
