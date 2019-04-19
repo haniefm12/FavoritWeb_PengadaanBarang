@@ -53,7 +53,47 @@
 			</ul>
 			<header>
 				<h1> <span>Approval</span></h1>	
-            </header> 
+			</header> 
+			<div>
+			<table class="table">				
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Id</th>
+						<th scope="col">Tanggal</th>
+						<th scope="col">Product</th>
+						<th scope="col">Supplier</th>
+						<th scope="col">Jumlah</th>
+						<th scope="col">Harga Satuan</th>
+						<th scope="col">Harga Total</th>
+						<th scope="col">Aksi</th>
+					</tr>
+				</thead>
+			<?php
+   
+				$sql3= "SELECT purchase_order.id_demand,purchase_order.tgl,product.nama_item,suppliers.nama_supplier,purchase_order.qty_demand,product.harga_satuan,purchase_order.sum_demand FROM purchase_order LEFT JOIN product ON purchase_order.id_item =product.id_item LEFT JOIN suppliers ON product.id_supplier=suppliers.id_supplier WHERE purchase_order.status=0";
+				$query3= mysqli_query($conn,$sql3);
+  
+				while ($hsl3= mysqli_fetch_assoc($query3)){
+			?>
+			
+				<tr>
+					<th style="background: white" scope ="row"><?php echo $hsl3['id_demand'];?></th>
+					<td style="background: white"><?php echo $hsl3['tgl'];?></td>
+					<td style="background: white"><?php echo $hsl3['nama_item'];?></td>
+					<td style="background: white"><?php echo $hsl3['nama_supplier'];?></td>
+					<td style="background: white"><?php echo $hsl3['qty_demand'];?></td>
+					<td style="background: white"><?php echo $hsl3['harga_satuan'];?></td>
+					<td style="background: white"><?php echo $hsl3['sum_demand'];?></td>
+					<td style="background: white"><?php echo"<button><a href='acc_btn.php?id=$hsl3[id_demand]'>Accept</a></button>
+				<button><a href='acc_dec_btn.php?id=$hsl3[id_demand]'>Decline</a></button></td>";?>
+				</tr>
+			<?php		
+				}
+			?>	
+			</table>
+
+
+			</div>
 		</div><!-- /container -->
 		<script src="assets/GoogleNexusWebsiteMenu/js/classie.js"></script>
 		<script src="assets/GoogleNexusWebsiteMenu/js/gnmenu.js"></script>

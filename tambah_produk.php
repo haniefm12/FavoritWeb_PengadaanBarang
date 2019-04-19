@@ -80,7 +80,7 @@
                 <br>
                 <input list="satuan"  placeholder="Satuan" name="satuan" required="">
                 <datalist id="satuan">
-                    <option value="Lembar"> aa</option>
+                    <option value="Lembar">
                     <option value="Rim">
                     <option value="Box">
                     <option value="Lusin">
