@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2019 at 07:32 AM
+-- Generation Time: Apr 19, 2019 at 05:43 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -25,10 +25,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `account_recievable`
+-- Table structure for table `account_payable`
 --
 
-CREATE TABLE `account_recievable` (
+CREATE TABLE `account_payable` (
   `tanggal` date NOT NULL,
   `id_debts` int(11) NOT NULL,
   `supplier` varchar(30) NOT NULL,
@@ -38,32 +38,11 @@ CREATE TABLE `account_recievable` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `account_recievable`
+-- Dumping data for table `account_payable`
 --
 
-INSERT INTO `account_recievable` (`tanggal`, `id_debts`, `supplier`, `status`, `sisa_tagihan`, `total_tagihan`) VALUES
+INSERT INTO `account_payable` (`tanggal`, `id_debts`, `supplier`, `status`, `sisa_tagihan`, `total_tagihan`) VALUES
 ('2019-04-13', 1, 'Sindu', 0, 200, 200);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `approval`
---
-
-CREATE TABLE `approval` (
-  `id_approve` int(5) NOT NULL,
-  `id_demand` int(5) NOT NULL,
-  `sum_demand` int(20) NOT NULL,
-  `approve` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `approval`
---
-
-INSERT INTO `approval` (`id_approve`, `id_demand`, `sum_demand`, `approve`) VALUES
-(1, 1, 200, 0),
-(2, 2, 200, 1);
 
 -- --------------------------------------------------------
 
@@ -87,7 +66,8 @@ CREATE TABLE `product` (
 INSERT INTO `product` (`id_item`, `id_supplier`, `nama_item`, `jumlah_item`, `satuan`, `harga_satuan`) VALUES
 (11, 1235, 'kertas', 1, 'lembar', 100),
 (12, 1234, 'kertas', 2, 'lembar', 100),
-(13, 1236, 'da', 1, 'lembar', 400);
+(13, 1236, 'da', 1, 'lembar', 400),
+(15, 1235, 'kucing', 0, 'Lusin', 2900);
 
 -- --------------------------------------------------------
 
@@ -97,17 +77,19 @@ INSERT INTO `product` (`id_item`, `id_supplier`, `nama_item`, `jumlah_item`, `sa
 
 CREATE TABLE `purchase_order` (
   `id_demand` int(5) NOT NULL,
+  `tgl` date NOT NULL,
   `id_item` int(5) NOT NULL,
   `qty_demand` int(10) NOT NULL,
-  `sum_demand` int(20) NOT NULL
+  `sum_demand` int(20) NOT NULL,
+  `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `purchase_order`
 --
 
-INSERT INTO `purchase_order` (`id_demand`, `id_item`, `qty_demand`, `sum_demand`) VALUES
-(3, 11, 2, 200);
+INSERT INTO `purchase_order` (`id_demand`, `tgl`, `id_item`, `qty_demand`, `sum_demand`, `status`) VALUES
+(26, '2019-04-19', 11, 2, 200, 0);
 
 -- --------------------------------------------------------
 
@@ -131,7 +113,8 @@ CREATE TABLE `suppliers` (
 INSERT INTO `suppliers` (`id_supplier`, `nama_supplier`, `email`, `alamat`, `no_hp`, `sisa_tagihan`) VALUES
 (1234, 'Sindu', 'sindu@mail.com', 'bandung', 812678556, 1),
 (1235, 'Gramed', 'gramed@mail', 'ciwastra', 595795, 0),
-(1236, 'App', 'aap@mail.com', 'utara', 832592375, 0);
+(1236, 'App', 'aap@mail.com', 'utara', 832592375, 0),
+(1237, 'jiah', 'h@mail', 'fhdhd', 75665, 0);
 
 -- --------------------------------------------------------
 
@@ -159,16 +142,10 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `nama`) VALUES
 --
 
 --
--- Indexes for table `account_recievable`
+-- Indexes for table `account_payable`
 --
-ALTER TABLE `account_recievable`
+ALTER TABLE `account_payable`
   ADD PRIMARY KEY (`id_debts`);
-
---
--- Indexes for table `approval`
---
-ALTER TABLE `approval`
-  ADD PRIMARY KEY (`id_approve`);
 
 --
 -- Indexes for table `product`
@@ -203,34 +180,28 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `account_recievable`
+-- AUTO_INCREMENT for table `account_payable`
 --
-ALTER TABLE `account_recievable`
+ALTER TABLE `account_payable`
   MODIFY `id_debts` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `approval`
---
-ALTER TABLE `approval`
-  MODIFY `id_approve` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_item` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_item` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `purchase_order`
 --
 ALTER TABLE `purchase_order`
-  MODIFY `id_demand` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_demand` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `id_supplier` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1245;
+  MODIFY `id_supplier` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1238;
 
 --
 -- AUTO_INCREMENT for table `user`
