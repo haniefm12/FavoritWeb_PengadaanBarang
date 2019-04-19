@@ -63,14 +63,15 @@
 			<div style="display:block; text-align: center">
 				
 			<form class="mainform" method="POST" enctype="multipart/form-data">
-				<input placeholder="Nama" type="text" name="nama_supplier" required="">
-				<input placeholder="E-mail" type="email" name="email">
+				<input style="width:386px" placeholder="Nama" type="text" name="nama_supplier" required="">
+				<br>
+				<input style="width:386px" placeholder="E-mail" type="email" name="email">
 				<br>
 				<input style="width:386px" type="text" name="telp" placeholder="Nomor Telepon">
 				<br>
 				<textarea style="width:386px" name="alamat" placeholder="Alamat"></textarea>
 				<br>
-				<input type="submit" name="submit" value="Submit">
+				<input class="submitbut" type="submit" name="submit" value="Submit">
 			</form>
 			<br>
 			

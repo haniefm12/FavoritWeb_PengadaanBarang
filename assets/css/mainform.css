@@ -11,3 +11,19 @@ input, textarea {
 	resize: none;
 }
 
+.submitbut{
+	background: grey;
+	border:none;
+	color:white;
+	margin:auto;
+	margin-top: 20px;
+	padding:10px 30px;
+}
+
+.submitbut:hover{
+	background: #72757e;
+}
+
+.submitbut:active{
+	background: #78909c;
+}

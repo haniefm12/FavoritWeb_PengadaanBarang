@@ -11,3 +11,20 @@
 	float:right;
 	margin-bottom: 5px;
 }
+
+.tambahBut {
+	background: grey;
+	border:none;
+	color:white;
+	margin:auto;
+	margin-top: 20px;
+	padding:10px 30px;
+}
+
+.tambahBut:hover{
+	background: #72757e;
+}
+
+.tambahBut:active{
+	background: #78909c;
+}
