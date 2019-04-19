@@ -8,7 +8,7 @@ if (!isset($_SESSION["sukses"]) and !isset($_SESSION["username"]) and !isset($_S
 
 	$id=$_GET['id'];
 
-	$sql= "UPDATE purchase_order SET purchase_order.status=purchase_order.status+1 WHERE purchase_order.id_demand='$id'";
-	$query= mysqli_query($conn,$sql);
+	$sql= "DELETE FROM purchase_order WHERE purchase_order.id_demand='$id'";
+	mysqli_query($conn,$sql);
 	header("location: acc.php");
 ?>

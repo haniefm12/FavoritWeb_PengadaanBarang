@@ -14,7 +14,6 @@
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/component.css" />
-		<link rel="stylesheet" type="text/css" href="assets/css/table.css" />
 		<script src="assets/GoogleNexusWebsiteMenu/js/modernizr.custom.js"></script>
 	</head>
 	<body>
@@ -53,72 +52,53 @@
 				<li><a href='mainMenu.php'>Favorit</a></li>
 				<li><a><span>Hi <?php echo $hello ?>!</span></a></li>
 			</ul>
-			<!-- Main Content -->
 			<header>
-				<h1> <span>Account Payable</span></h1>	
-			</header>
-			<div class="head row">
-				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">		
-				</div>
-				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">
-					<form>
-         				<button type="submit" formaction="tambah_supplier.php">Tambah Supplier</button>
-      				</form>	
-				</div>
-			</div>
-           
-			 
-			 <table class="table">				
+				<h1> <span>Purchase Order</span></h1>	
+			</header> 
+			<div>
+			<br><br>
+			<table class="table">				
 				<thead class="thead-dark">
 					<tr>
+						<th scope="col">Id</th>
 						<th scope="col">Tanggal</th>
-						<th scope="col">Nomor</th>
-						<th scope="col">Supplier</th>
 						<th scope="col">Product</th>
+						<th scope="col">Supplier</th>
 						<th scope="col">Jumlah</th>
+						<th scope="col">Satuan</th>
 						<th scope="col">Harga Satuan</th>
-						<th scope="col">Status</th>
-						<th scope="col">Total</th>
-						<th scope="col">Sisa</th>
-						<th scope="col">Aksi</th>
+						<th scope="col">Harga Total</th>
 					</tr>
 				</thead>
 			<?php
    
-				$sql1= "SELECT account_payable.tanggal,account_payable.id_demand,suppliers.nama_supplier,product.nama_item,purchase_order.qty_demand,
-				product.satuan,product.harga_satuan,account_payable.paid,account_payable.total_tagihan,account_payable.sisa_tagihan 
-				FROM account_payable 
-				LEFT JOIN purchase_order ON account_payable.id_demand = purchase_order.id_demand
-				LEFT JOIN product ON purchase_order.id_item = product.id_item
-				LEFT JOIN suppliers ON product.id_supplier = suppliers.id_supplier";
-				$query1= mysqli_query($conn,$sql1);
+				$sql3= "SELECT purchase_order.id_demand,purchase_order.tgl,product.nama_item,suppliers.nama_supplier,purchase_order.qty_demand,product.satuan,product.harga_satuan,purchase_order.sum_demand FROM purchase_order LEFT JOIN product ON purchase_order.id_item =product.id_item LEFT JOIN suppliers ON product.id_supplier=suppliers.id_supplier WHERE purchase_order.status=1";
+				$query3= mysqli_query($conn,$sql3);
   
-				while ($hsl1= mysqli_fetch_assoc($query1)){
+				while ($hsl3= mysqli_fetch_assoc($query3)){
 			?>
 			
 				<tr>
-					<th style="background: white" scope ="row"><?php echo $hsl1['tanggal'];?></th>
-					<td style="background: white"><?php echo $hsl1['id_demand'];?></td>
-					<td style="background: white"><?php echo $hsl1['nama_supplier'];?></td>
-					<td style="background: white"><?php echo $hsl1['nama_item'];?></td>
-					<td style="background: white"><?php echo $hsl1['qty_demand']." ".$hsl1['satuan'];?></td>
-					<td style="background: white"><?php echo $hsl1['harga_satuan'];?></td>
-					<td style="background: white"><?php if($hsl1['paid']==0){echo "Belum Lunas";}else{echo "Lunas";}?></td>
-					<td style="background: white"><?php echo $hsl1['total_tagihan'];?></td>
-					<td style="background: white"><?php echo $hsl1['sisa_tagihan'];?></td>
-					<td style="background: white"><?php echo"<button><a href='hutang_bayar_btn.php?id=$hsl1[id_demand]'>Bayar</a></button>
-				<button><a href='hutang_hapus_btn.php?id=$hsl1[id_demand]'>Hapus</a></button></td>";?>
+					<th style="background: white" scope ="row"><?php echo $hsl3['id_demand'];?></th>
+					<td style="background: white"><?php echo $hsl3['tgl'];?></td>
+					<td style="background: white"><?php echo $hsl3['nama_item'];?></td>
+					<td style="background: white"><?php echo $hsl3['nama_supplier'];?></td>
+					<td style="background: white"><?php echo $hsl3['qty_demand'];?></td>
+					<td style="background: white"><?php echo $hsl3['satuan'];?></td>
+					<td style="background: white"><?php echo $hsl3['harga_satuan'];?></td>
+					<td style="background: white"><?php echo $hsl3['sum_demand'];?></td>
 				</tr>
 			<?php		
 				}
 			?>	
-			</table> 
+			</table>
+
+			</div>
 		</div><!-- /container -->
 		<script src="assets/GoogleNexusWebsiteMenu/js/classie.js"></script>
 		<script src="assets/GoogleNexusWebsiteMenu/js/gnmenu.js"></script>
 		<script>
 			new gnMenu( document.getElementById( 'gn-menu' ) );
 		</script>
-
 </body>
 </html>
