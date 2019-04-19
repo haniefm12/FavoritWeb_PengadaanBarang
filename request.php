@@ -88,13 +88,11 @@
 		$result1= mysqli_fetch_array($query1);
 		$qty_2 = $qty*$result1[3];
 
-		$sql2= "INSERT INTO `purchase_order`(`id_item`,`qty_demand`,`sum_demand`)
-				VALUES ('$supplier','$qty','$qty_2')";
+		$sql2= "INSERT INTO `purchase_order`(`id_item`,`tgl`,`qty_demand`,`sum_demand`)
+				VALUES ('$supplier',now(),'$qty','$qty_2')";
 		mysqli_query($conn,$sql2);
 
-		echo '<script language="javascript">';
-		echo 'alert("berhasil membuat purchase request")';
-		echo '</script>';
+		header('Location: request.php');
 		?> 
 <?php
 	}
@@ -106,10 +104,11 @@
 			<table class="table">				
 				<thead class="thead-dark">
 					<tr>
-						<th scope="col">Id Request</th>
-						<th scope="col">Nama Product</th>
+						<th scope="col">Id</th>
+						<th scope="col">Tanggal</th>
+						<th scope="col">Product</th>
 						<th scope="col">Supplier</th>
-						<th scope="col">Qty Request</th>
+						<th scope="col">Jumlah</th>
 						<th scope="col">Satuan</th>
 						<th scope="col">Harga Satuan</th>
 						<th scope="col">Harga Total</th>
@@ -117,20 +116,21 @@
 				</thead>
 			<?php
    
-				$sql= "SELECT purchase_order.id_demand,product.nama_item,suppliers.nama_supplier,purchase_order.qty_demand,product.satuan,product.harga_satuan,purchase_order.sum_demand FROM purchase_order LEFT JOIN product ON purchase_order.id_item =product.id_item LEFT JOIN suppliers ON product.id_supplier=suppliers.id_supplier WHERE purchase_order.status=0";
-				$query= mysqli_query($conn,$sql);
+				$sql3= "SELECT purchase_order.id_demand,purchase_order.tgl,product.nama_item,suppliers.nama_supplier,purchase_order.qty_demand,product.satuan,product.harga_satuan,purchase_order.sum_demand FROM purchase_order LEFT JOIN product ON purchase_order.id_item =product.id_item LEFT JOIN suppliers ON product.id_supplier=suppliers.id_supplier WHERE purchase_order.status=0";
+				$query3= mysqli_query($conn,$sql3);
   
-				while ($hsl= mysqli_fetch_assoc($query)){
+				while ($hsl3= mysqli_fetch_assoc($query3)){
 			?>
 			
 				<tr>
-	    			<th style="background: white" scope ="row"><?php echo $hsl['id_demand'];?></th>
-					<td style="background: white"><?php echo $hsl['nama_item'];?></td>
-					<td style="background: white"><?php echo $hsl['nama_supplier'];?></td>
-					<td style="background: white"><?php echo $hsl['qty_demand'];?></td>
-					<td style="background: white"><?php echo $hsl['satuan'];?></td>
-					<td style="background: white"><?php echo $hsl['harga_satuan'];?></td>
-					<td style="background: white"><?php echo $hsl['sum_demand'];?></td>
+					<th style="background: white" scope ="row"><?php echo $hsl3['id_demand'];?></th>
+					<td style="background: white"><?php echo $hsl3['tgl'];?></td>
+					<td style="background: white"><?php echo $hsl3['nama_item'];?></td>
+					<td style="background: white"><?php echo $hsl3['nama_supplier'];?></td>
+					<td style="background: white"><?php echo $hsl3['qty_demand'];?></td>
+					<td style="background: white"><?php echo $hsl3['satuan'];?></td>
+					<td style="background: white"><?php echo $hsl3['harga_satuan'];?></td>
+					<td style="background: white"><?php echo $hsl3['sum_demand'];?></td>
 				</tr>
 			<?php		
 				}
