@@ -62,7 +62,8 @@
 			<div style="display:block; text-align: center">
 				
             <form class="mainform" method="POST" enctype="multipart/form-data">
-                <input list="suppliers" placeholder="Supplier" name="supplier" required="">
+                <div class="row">
+                <div class="col-lg-6" style="padding:0"><input style="width:270px;float:right" list="suppliers" placeholder="Supplier" name="supplier" required=""></div>
 			    <datalist id="suppliers">	
 			    <?php 
 				    $sql_s="SELECT id_supplier,nama_supplier FROM suppliers";
@@ -76,9 +77,10 @@
 				}
 				?>
 				</datalist>
-                <input placeholder="Nama item" type="text" name="nama_item" required="">
-                <br>
-                <input list="satuan"  placeholder="Satuan" name="satuan" required="">
+                <div class="col-lg-6" style="padding:0"><input style="width:270px;float:left"placeholder="Nama item" type="text" name="nama_item" required=""></div>
+                </div>
+                <div class="row">
+                <div class="col-lg-6" style="padding:0"><input style="width:270px;float:right" list="satuan"  placeholder="Satuan" name="satuan" required=""></div>
                 <datalist id="satuan">
                     <option value="Lembar">
                     <option value="Rim">
@@ -86,9 +88,10 @@
                     <option value="Lusin">
                     <option value="Buah">
                 </datalist>
-				<input type="number" name="harga_satuan" placeholder="Harga Satuan (Rp)">
+				<div class="col-lg-6" style="padding:0"><input style="width:270px;float:left" type="number" name="harga_satuan" placeholder="Harga Satuan (Rp)"></div>
 				<br>
-				<input type="submit" name="submit" value="Submit">
+				<input class="submitbut" type="submit" name="submit" value="Submit">
+				</div>
 			</form>
 			<br>
 			

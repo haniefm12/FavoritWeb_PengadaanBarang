@@ -65,7 +65,7 @@
 				</div>
 				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">
 					<form>
-         				<button type="submit" formaction="tambah_produk.php">Tambah Product</button>
+         				<button class="tambahBut" type="submit" formaction="tambah_produk.php">Tambah Product</button>
       				</form>	
 				</div>
 			</div>
