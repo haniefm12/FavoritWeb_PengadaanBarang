@@ -41,7 +41,7 @@
 					<nav class="gn-menu-wrapper">
 						<div class="gn-scroller">
 							<ul class="gn-menu">
-								<li><a class="gn-icon gn-icon-download" href='hutang.php'>Account Receivable</a></li>
+								<li><a class="gn-icon gn-icon-download" href='hutang.php'>Account Payable</a></li>
 								<li><a class="gn-icon gn-icon-cog" href='request.php'>Purchase Request</a></li>
 								<li><a class="gn-icon gn-icon-help" href='produk.php'>Product</a></li>
 								<li><a class="gn-icon gn-icon-help" href='supplier.php'>Supplier</a></li>
@@ -80,7 +80,7 @@
                 <br>
                 <input list="satuan"  placeholder="Satuan" name="satuan" required="">
                 <datalist id="satuan">
-                    <option value="Lembar">
+                    <option value="Lembar"> aa</option>
                     <option value="Rim">
                     <option value="Box">
                     <option value="Lusin">

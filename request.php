@@ -37,7 +37,7 @@
 					<nav class="gn-menu-wrapper">
 						<div class="gn-scroller">
 							<ul class="gn-menu">
-								<li><a class="gn-icon gn-icon-download" href='hutang.php'>Account Receivable</a></li>
+								<li><a class="gn-icon gn-icon-download" href='hutang.php'>Account Payable</a></li>
 								<li><a class="gn-icon gn-icon-cog" href='Request.php'>Purchase Request</a></li>
 								<li><a class="gn-icon gn-icon-help" href='produk.php'>Product</a></li>
 								<li><a class="gn-icon gn-icon-help" href='supplier.php'>Supplier</a></li>
@@ -55,24 +55,88 @@
 				<h1> <span>Purchase Request</span></h1>	
 			</header> 
 			<div>
-			<form  method="POST">	
-			<input list="suppliers" name="suppliers">
-			<datalist id="suppliers">	
+			<select name="request" form="request">
+			<option  selected value="">Pilih Product</option>
 			<?php 
-				$sql_s="SELECT id_supplier,nama_supplier FROM suppliers";
+				$sql_s="SELECT product.id_item,product.nama_item,suppliers.nama_supplier FROM product LEFT JOIN suppliers ON product.id_supplier=suppliers.id_supplier";
 				$query_s= mysqli_query($conn,$sql_s);
 				while ($hsl_s = mysqli_fetch_assoc($query_s)){
 				?>
 				
-					<option value=<?php echo $hsl_s['id_supplier'];?>>
+					<option value=<?php echo $hsl_s['id_item'];?>><?php echo "[".$hsl_s['id_item']."] ".$hsl_s['nama_item']." (".$hsl_s['nama_supplier'].")";?></option>
 				
-				<?php
-				}
-				?>
-				</datalist>
-  					<input type="submit">
-
+					<?php
+					}
+					?>
+			</select>
+			<form method="POST" class="mainform" enctype="multipart/form-data" id="request">
+			<input type="number" name="qty_demand" placeholder="Jumlah" min="1">
+			<br>
+			<input type="submit" name="Pilih" value="Request">
 			</form>
+			
+			<?php
+
+	if (isset($_POST['Pilih'])) {
+		include 'koneksi_model.php';
+
+		$supplier=$_POST['request'];
+		$qty=$_POST['qty_demand'];
+        
+        $sql1="SELECT id_item,nama_item,satuan,harga_satuan FROM product WHERE id_item='".$supplier."'";
+		$query1= mysqli_query($conn,$sql1);
+		$result1= mysqli_fetch_array($query1);
+		$qty_2 = $qty*$result1[3];
+
+		$sql2= "INSERT INTO `purchase_order`(`id_item`,`qty_demand`,`sum_demand`)
+				VALUES ('$supplier','$qty','$qty_2')";
+		mysqli_query($conn,$sql2);
+
+		echo '<script language="javascript">';
+		echo 'alert("berhasil membuat purchase request")';
+		echo '</script>';
+		?> 
+<?php
+	}
+	?>
+			</div>
+			<div>
+			<br><br>
+			<h2> <span> Daftar Purchase Request</span></h2>
+			<table class="table">				
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Id Request</th>
+						<th scope="col">Nama Product</th>
+						<th scope="col">Supplier</th>
+						<th scope="col">Qty Request</th>
+						<th scope="col">Satuan</th>
+						<th scope="col">Harga Satuan</th>
+						<th scope="col">Harga Total</th>
+					</tr>
+				</thead>
+			<?php
+   
+				$sql= "SELECT purchase_order.id_demand,product.nama_item,suppliers.nama_supplier,purchase_order.qty_demand,product.satuan,product.harga_satuan,purchase_order.sum_demand FROM purchase_order LEFT JOIN product ON purchase_order.id_item =product.id_item LEFT JOIN suppliers ON product.id_supplier=suppliers.id_supplier WHERE purchase_order.status=0";
+				$query= mysqli_query($conn,$sql);
+  
+				while ($hsl= mysqli_fetch_assoc($query)){
+			?>
+			
+				<tr>
+	    			<th style="background: white" scope ="row"><?php echo $hsl['id_demand'];?></th>
+					<td style="background: white"><?php echo $hsl['nama_item'];?></td>
+					<td style="background: white"><?php echo $hsl['nama_supplier'];?></td>
+					<td style="background: white"><?php echo $hsl['qty_demand'];?></td>
+					<td style="background: white"><?php echo $hsl['satuan'];?></td>
+					<td style="background: white"><?php echo $hsl['harga_satuan'];?></td>
+					<td style="background: white"><?php echo $hsl['sum_demand'];?></td>
+				</tr>
+			<?php		
+				}
+			?>	
+			</table>
+
 			</div>
 		</div><!-- /container -->
 		<script src="assets/GoogleNexusWebsiteMenu/js/classie.js"></script>
@@ -80,6 +144,5 @@
 		<script>
 			new gnMenu( document.getElementById( 'gn-menu' ) );
 		</script>
-
 </body>
 </html>

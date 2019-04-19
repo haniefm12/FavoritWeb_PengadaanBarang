@@ -38,8 +38,8 @@
 					<nav class="gn-menu-wrapper">
 						<div class="gn-scroller">
 							<ul class="gn-menu">
-								<li><a class="gn-icon gn-icon-download" href='hutang.php'>Account Receivable</a></li>
-								<li><a class="gn-icon gn-icon-cog" href='order.php'>Purchase Request</a></li>
+								<li><a class="gn-icon gn-icon-download" href='hutang.php'>Account Payable</a></li>
+								<li><a class="gn-icon gn-icon-cog" href='request.php'>Purchase Request</a></li>
 								<li><a class="gn-icon gn-icon-help" href='produk.php'>Product</a></li>
 								<li><a class="gn-icon gn-icon-help" href='supplier.php'>Supplier</a></li>
 								<li><a class="gn-icon gn-icon-help"href='acc.php'>Approval</a></li>
@@ -54,7 +54,7 @@
 			</ul>
 			<!-- Main Content -->
 			<header>
-				<h1> <span>Account Recievable</span></h1>	
+				<h1> <span>Account Payable</span></h1>	
 			</header>
 			<div class="head row">
 				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">		
