@@ -15,6 +15,7 @@
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/component.css" />
 		<link rel="stylesheet" type="text/css" href="assets/css/table.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/mainform.css" />
 		<script src="assets/GoogleNexusWebsiteMenu/js/modernizr.custom.js"></script>
 	</head>
 	<body>
@@ -31,7 +32,7 @@
 			$hello = $result[0];
 		}
 ?>
-		<div class="container">
+		<div class="container" style="width:90%;max-width: none">
 			<ul id="gn-menu" class="gn-menu-main">
 				<li class="gn-trigger">
 					<a class="gn-icon gn-icon-menu"><span>Menu</span></a>
@@ -62,7 +63,7 @@
 				</div>
 				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">
 					  <form>
-         				<button type="submit" formaction="">Cetak</button>
+         				<button class="tambahBut" type="submit" formaction="">Cetak</button>
       				</form>	
 				</div>
 			</div>
@@ -110,8 +111,8 @@
 					<td style="background: white"><?php if($hsl1['paid']==0){echo "Belum Lunas";}else{echo "Lunas";}?></td>
 					<td style="background: white"><?php echo $hsl1['total_tagihan'];?></td>
 					<td style="background: white"><?php echo $hsl1['sisa_tagihan'];?></td>
-					<td style="background: white"><?php echo"<button><a href='hutang_bayar_btn.php?id=$hsl1[id_demand]'>Bayar</a></button>
-				<button><a href='hutang_hapus_btn.php?id=$hsl1[id_demand]'>Hapus</a></button></td>";?>
+					<td style="background: white"><?php echo"<button class='buttonBayar'><a class='actText' href='hutang_bayar_btn.php?id=$hsl1[id_demand]'>Bayar</a></button>
+				<button class='actButtonNo'><a class='actText' href='hutang_hapus_btn.php?id=$hsl1[id_demand]'>Hapus</a></button></td>";?>
 				</tr>
 			<?php		
 				}

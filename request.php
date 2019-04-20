@@ -15,6 +15,7 @@
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/component.css" />
 		<script src="assets/GoogleNexusWebsiteMenu/js/modernizr.custom.js"></script>
+		<link rel="stylesheet" type="text/css" href="assets/css/mainform.css" />
 	</head>
 	<body>
 	<?php
@@ -56,7 +57,8 @@
 				<h1> <span>Purchase Request</span></h1>	
 			</header> 
 			<div>
-			<select name="request" form="request">
+			<div class="row">
+			<select style="padding:5px; width:270px" name="request" form="request">
 			<option  selected value="">Pilih Product</option>
 			<?php 
 				$sql_s="SELECT product.id_item,product.nama_item,suppliers.nama_supplier FROM product LEFT JOIN suppliers ON product.id_supplier=suppliers.id_supplier";
@@ -70,12 +72,13 @@
 					}
 					?>
 			</select>
-			<form method="POST" class="mainform" enctype="multipart/form-data" id="request">
-			<input type="number" name="qty_demand" placeholder="Jumlah" min="1">
-			<br>
-			<input type="submit" name="Pilih" value="Request">
+			</div>
+			<div class="row">
+			<form method="POST" enctype="multipart/form-data" id="request">
+			<input style="float:left; margin-left: 0; width:270px" type="number" name="qty_demand" placeholder="Jumlah" min="1"><br>
+			<input style="float:left; margin-top: 10px" class="submitbut" type="submit" name="Pilih" value="Request">
 			</form>
-			
+			</div>
 			<?php
 
 	if (isset($_POST['Pilih'])) {

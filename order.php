@@ -15,6 +15,7 @@
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/component.css" />
 		<script src="assets/GoogleNexusWebsiteMenu/js/modernizr.custom.js"></script>
+		<link rel="stylesheet" type="text/css" href="assets/css/table.css" />
 	</head>
 	<body>
 	<?php
@@ -56,9 +57,8 @@
 				<h1> <span>Purchase Order</span></h1>	
 			</header> 
 			<div>
-			<br><br>
 			<form>
-         				<button class="tambahBut" type="submit" formaction="">Cetak</button>
+         				<button style="float: right;"class="tambahBut" type="submit" formaction="">Cetak</button>
       				</form>	
 			<table class="table">				
 				<thead class="thead-dark">

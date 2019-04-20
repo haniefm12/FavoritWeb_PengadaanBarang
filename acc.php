@@ -15,6 +15,7 @@
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/component.css" />
 		<script src="assets/GoogleNexusWebsiteMenu/js/modernizr.custom.js"></script>
+		<link rel="stylesheet" type="text/css" href="assets/css/mainform.css" />
 	</head>
 	<body>
 	<?php
@@ -86,8 +87,8 @@
 					<td style="background: white"><?php echo $hsl3['qty_demand'];?></td>
 					<td style="background: white"><?php echo $hsl3['harga_satuan'];?></td>
 					<td style="background: white"><?php echo $hsl3['sum_demand'];?></td>
-					<td style="background: white"><?php echo"<button><a href='acc_btn.php?id=$hsl3[id_demand]'>Accept</a></button>
-				<button><a href='acc_dec_btn.php?id=$hsl3[id_demand]'>Decline</a></button></td>";?>
+					<td style="background: white"><?php echo"<button class='actButtonYes'><a class='actText' href='acc_btn.php?id=$hsl3[id_demand]'>Accept</a></button>
+				<button class='actButtonNo'><a class='actText' href='acc_dec_btn.php?id=$hsl3[id_demand]'>Decline</a></button></td>";?>
 				</tr>
 			<?php		
 				}

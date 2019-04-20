@@ -27,3 +27,55 @@ input, textarea {
 .submitbut:active{
 	background: #78909c;
 }
+
+.actButtonYes {
+	border:none;
+	background: #39ff14;
+	border:#39ff14 solid 2px;
+	padding:2px;
+	padding-right: 7px;
+	padding-left: 7px;
+}
+
+.actButtonYes:hover {
+	background: #50c878;
+	border:#50c878 solid 2px;
+}
+
+.actButtonNo {
+	border:none;
+	background: #d31738;
+	border:#de1738 solid 2px;
+	padding:2px;
+	padding-right: 7px;
+	padding-left: 7px;
+}
+
+.actButtonNo:hover{
+	background: #be1600;
+	border:#be1600 solid 2px;
+}
+
+.actText {
+	color:white;
+	font-family: 'Verdana';
+	font-style: none;
+}
+
+.actText:hover {
+	text-decoration: none;
+	color: white;
+}
+.buttonBayar{
+	border:none;
+	background: #27aee3;
+	border:#27aee3 solid 2px;
+	padding:2px;
+	padding-right: 7px;
+	padding-left: 7px;
+}
+
+.buttonBayar:hover{
+	background: #1d8ece;
+	border:#1d8ece solid 2px;
+}

@@ -19,6 +19,7 @@
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/component.css" />
 		<script src="assets/GoogleNexusWebsiteMenu/js/modernizr.custom.js"></script>
 		<link rel="stylesheet" type="text/css" href="assets/css/table.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/mainform.css" />	
 	</head>
 	<body>
 	<?php
@@ -71,17 +72,18 @@
 				}
 			?>
 			<div class="head row">
-        			<p class="card-text">Sisa Tagihan Keseluruhan :  Rp <?php echo $sisa.",00" ?> </p>
-     			
-				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">		
-				</div>
+        			
 				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">
 					<form>
-         				<button class="tambahBut" type="submit" formaction="tambah_supplier.php">Tambah Supplier</button>
+         				<button class="tambahBut" style="float:left" type="submit" formaction="tambah_supplier.php">Tambah Supplier</button>
 					  </form>	
 					  <form>
-         				<button class="tambahBut" type="submit" formaction="">Cetak</button>
+         				<button class="tambahBut" style="float:left"type="submit" formaction="">Cetak</button>
       				</form>	
+				</div>
+
+				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">		
+					<p class="card-text">Sisa Tagihan Keseluruhan :  Rp <?php echo $sisa.",00" ?> </p>
 				</div>
 			</div>
            
