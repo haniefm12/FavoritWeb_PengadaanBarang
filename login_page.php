@@ -16,7 +16,8 @@
 
 <!-- main -->
 	<div class="main-w3layouts wrapper">
-		<h1>Welcome</h1>
+		<h1>Favorit</h1>
+		<h2 style="text-align:center;font-size: 23px;font-weight: bold">Sistem Pengadaan Barang</h2>
 		<div class="main-agileinfo">
 			<div class="agileits-top">
 				<form action="#" method="post">
