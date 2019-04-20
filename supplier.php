@@ -36,7 +36,7 @@
 		}
 	?>
 		<div class="container">
-			<ul id="gn-menu" class="gn-menu-main">
+			<ul id="gn-menu" style="z-index:99" class="gn-menu-main">
 				<li class="gn-trigger">
 					<a class="gn-icon gn-icon-menu"><span>Menu</span></a>
 					<nav class="gn-menu-wrapper">
@@ -73,7 +73,7 @@
 			?>
 			<div class="head row">
         			
-				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">
+				<div style="z-index:1"class="col-sm-6 col-md-6 col-xl-6 col-lg-6">
 					<form>
          				<button class="tambahBut" style="float:left" type="submit" formaction="tambah_supplier.php">Tambah Supplier</button>
 					  </form>	
@@ -83,7 +83,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">		
-					<p class="card-text">Sisa Tagihan Keseluruhan :  Rp <?php echo $sisa.",00" ?> </p>
+					<p style="margin-bottom: 5px;"class="card-text">Sisa Tagihan Keseluruhan :  Rp <?php echo $sisa.",00" ?> </p>
 				</div>
 			</div>
            
@@ -113,7 +113,7 @@
 					<td style="background: white"><?php echo $hsl['alamat'];?></td>
 					<td style="background: white"><?php echo "(+62) ".$hsl['no_hp'];?></td>
 					<td style="background: white"><?php echo "Rp ".$hsl['sisa_tagihan'];?></td>
-					<td style="background: white"> <?php echo"<button><a href='supplier_hapus_btn.php?id=$hsl[id_supplier]'>Hapus</a></button>";?></td>
+					<td style="background: white"> <?php echo"<button class='actButtonNo'><a class='actText' href='supplier_hapus_btn.php?id=$hsl[id_supplier]'>Hapus</a></button>";?></td>
 				</tr>
 			<?php		
 				}

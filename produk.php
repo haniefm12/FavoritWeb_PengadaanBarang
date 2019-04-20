@@ -19,6 +19,7 @@
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/component.css" />
 		<script src="assets/GoogleNexusWebsiteMenu/js/modernizr.custom.js"></script>
 		<link rel="stylesheet" type="text/css" href="assets/css/table.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/mainform.css" />
 	</head>
 	<body>
 	<?php
@@ -101,7 +102,7 @@
 					<td style="background: white"><?php echo $hsl['jumlah_item'];?></td>
 					<td style="background: white"><?php echo $hsl['satuan'];?></td>
 					<td style="background: white"><?php echo $hsl['harga_satuan'];?></td>
-					<td style="background: white"> <?php echo"<button><a href='produk_hapus_btn.php?id=$hsl[id_item]'>Hapus</a></button>";?></td>
+					<td style="background: white"> <?php echo"<button class='actButtonNo'><a class='actText' href='produk_hapus_btn.php?id=$hsl[id_item]'>Hapus</a></button>";?></td>
 				</tr>
 			<?php		
 				}
