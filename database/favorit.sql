@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2019 at 05:43 AM
+-- Generation Time: Apr 20, 2019 at 02:09 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -31,18 +31,20 @@ SET time_zone = "+00:00";
 CREATE TABLE `account_payable` (
   `tanggal` date NOT NULL,
   `id_debts` int(11) NOT NULL,
-  `supplier` varchar(30) NOT NULL,
-  `status` tinyint(1) NOT NULL,
+  `id_demand` int(11) NOT NULL,
+  `id_supplier` int(11) NOT NULL,
+  `total_tagihan` int(20) DEFAULT NULL,
   `sisa_tagihan` int(20) DEFAULT NULL,
-  `total_tagihan` int(20) DEFAULT NULL
+  `paid` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `account_payable`
 --
 
-INSERT INTO `account_payable` (`tanggal`, `id_debts`, `supplier`, `status`, `sisa_tagihan`, `total_tagihan`) VALUES
-('2019-04-13', 1, 'Sindu', 0, 200, 200);
+INSERT INTO `account_payable` (`tanggal`, `id_debts`, `id_demand`, `id_supplier`, `total_tagihan`, `sisa_tagihan`, `paid`) VALUES
+('2019-04-20', 28, 52, 1238, 2000000, 0, 1),
+('2019-04-20', 29, 51, 1239, 3500, 3500, 0);
 
 -- --------------------------------------------------------
 
@@ -64,10 +66,10 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id_item`, `id_supplier`, `nama_item`, `jumlah_item`, `satuan`, `harga_satuan`) VALUES
-(11, 1235, 'kertas', 1, 'lembar', 100),
-(12, 1234, 'kertas', 2, 'lembar', 100),
-(13, 1236, 'da', 1, 'lembar', 400),
-(15, 1235, 'kucing', 0, 'Lusin', 2900);
+(18, 1238, 'Djarum SUper', 3, 'Box', 4),
+(19, 1239, 'Beer', 0, 'Buah', 2000),
+(20, 1239, 'kue', 5, 'Lusin', 700),
+(21, 1238, 'kentang', 500, 'Rim', 4000);
 
 -- --------------------------------------------------------
 
@@ -89,7 +91,10 @@ CREATE TABLE `purchase_order` (
 --
 
 INSERT INTO `purchase_order` (`id_demand`, `tgl`, `id_item`, `qty_demand`, `sum_demand`, `status`) VALUES
-(26, '2019-04-19', 11, 2, 200, 0);
+(49, '2019-04-20', 18, 4, 16, 0),
+(50, '2019-04-20', 19, 6, 12000, 0),
+(51, '2019-04-20', 20, 5, 3500, 1),
+(52, '2019-04-20', 21, 500, 2000000, 1);
 
 -- --------------------------------------------------------
 
@@ -111,10 +116,8 @@ CREATE TABLE `suppliers` (
 --
 
 INSERT INTO `suppliers` (`id_supplier`, `nama_supplier`, `email`, `alamat`, `no_hp`, `sisa_tagihan`) VALUES
-(1234, 'Sindu', 'sindu@mail.com', 'bandung', 812678556, 1),
-(1235, 'Gramed', 'gramed@mail', 'ciwastra', 595795, 0),
-(1236, 'App', 'aap@mail.com', 'utara', 832592375, 0),
-(1237, 'jiah', 'h@mail', 'fhdhd', 75665, 0);
+(1238, 'DJARUM', 'dj@mail.com', 'Jalan Jalan no.5 Bandung', 812223, 0),
+(1239, 'Bintang', 'star@mail', 'Bali', 81234324, 3500);
 
 -- --------------------------------------------------------
 
@@ -145,7 +148,9 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `nama`) VALUES
 -- Indexes for table `account_payable`
 --
 ALTER TABLE `account_payable`
-  ADD PRIMARY KEY (`id_debts`);
+  ADD PRIMARY KEY (`id_debts`),
+  ADD KEY `id_supplier` (`id_supplier`),
+  ADD KEY `id_demand` (`id_demand`);
 
 --
 -- Indexes for table `product`
@@ -183,25 +188,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `account_payable`
 --
 ALTER TABLE `account_payable`
-  MODIFY `id_debts` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_debts` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_item` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_item` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `purchase_order`
 --
 ALTER TABLE `purchase_order`
-  MODIFY `id_demand` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_demand` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `id_supplier` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1238;
+  MODIFY `id_supplier` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1240;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -214,6 +219,13 @@ ALTER TABLE `user`
 --
 
 --
+-- Constraints for table `account_payable`
+--
+ALTER TABLE `account_payable`
+  ADD CONSTRAINT `account_payable_ibfk_1` FOREIGN KEY (`id_demand`) REFERENCES `purchase_order` (`id_demand`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `account_payable_ibfk_2` FOREIGN KEY (`id_supplier`) REFERENCES `suppliers` (`id_supplier`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `product`
 --
 ALTER TABLE `product`
@@ -223,7 +235,7 @@ ALTER TABLE `product`
 -- Constraints for table `purchase_order`
 --
 ALTER TABLE `purchase_order`
-  ADD CONSTRAINT `purchase_order_ibfk_1` FOREIGN KEY (`id_item`) REFERENCES `product` (`id_item`);
+  ADD CONSTRAINT `purchase_order_ibfk_1` FOREIGN KEY (`id_item`) REFERENCES `product` (`id_item`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
