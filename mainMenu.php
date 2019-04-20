@@ -21,7 +21,10 @@
 	include 'koneksi_model.php';
 	session_start();
 	if (!isset($_SESSION["sukses"]) and !isset($_SESSION["username"]) and !isset($_SESSION["password"])) {
-		die("silahkan login <a href='login_page.php'>disini</a>");
+		die("<div style='margin-top:200px'>
+			<h1 style='text-align:center;color:red;font-weight:bold'>Kami tidak mengenali anda!</h1>
+			<h3 style='text-align:center'>Silahkan login <a href='login_page.php'>disini</a></h3>
+			</div>");
 	}else
 		{
 			$sql= "SELECT nama FROM user WHERE username='".$_SESSION["username"]."'";
@@ -43,8 +46,7 @@
 								<li><a class="gn-icon gn-icon-download" href='hutang.php'>Account Payable</a></li>
 								<li><a class="gn-icon gn-icon-help" href='supplier.php'>Supplier</a></li>
 								<li><a class="gn-icon gn-icon-help" href='produk.php'>Product</a></li>
-								<li><br><br><br><br></li>
-								<li><a class="gn-icon gn-icon-cog" href='logout.php'>Logout</a></li>
+								<li class="bawah"><a class="gn-icon gn-icon-cog" href='logout.php'>Logout</a></li>
 							</ul>
 						</div><!-- /gn-scroller -->
 					</nav>
