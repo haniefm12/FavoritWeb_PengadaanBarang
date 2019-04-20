@@ -64,7 +64,7 @@
 				
             <form class="mainform" method="POST" enctype="multipart/form-data">
                 <div class="row">
-                <div class="col-lg-6" style="padding:0"><input style="width:270px;float:right" list="suppliers" placeholder="Supplier" name="supplier" required=""></div>
+                <div class="col-lg-6" style="padding:0"><input style="width:270px;float:right" list="suppliers" autocomplete="off" placeholder="Supplier" name="supplier" required=""></div>
 			    <datalist id="suppliers">	
 			    <?php 
 				    $sql_s="SELECT id_supplier,nama_supplier FROM suppliers";

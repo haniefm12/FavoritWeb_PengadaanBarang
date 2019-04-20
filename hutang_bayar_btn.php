@@ -15,12 +15,8 @@ if (!isset($_SESSION["sukses"]) and !isset($_SESSION["username"]) and !isset($_S
     $sql3 = "UPDATE suppliers SET suppliers.sisa_tagihan = suppliers.sisa_tagihan-'$result4[1]' WHERE suppliers.id_supplier ='$result4[0]'";
 	mysqli_query($conn,$sql3);
 
-	$sql= "DELETE FROM account_payable WHERE account_payable.id_demand='$id'";
+	$sql= "UPDATE account_payable SET account_payable.sisa_tagihan = account_payable.sisa_tagihan - account_payable.sisa_tagihan, account_payable.paid = account_payable.paid + 1  WHERE account_payable.id_demand='$id'";
     mysqli_query($conn,$sql);
-
-    $sql1= "DELETE FROM purchase_order WHERE purchase_order.id_demand='$id'";
-	mysqli_query($conn,$sql1);
-    
 
 	header("location: hutang.php");
 ?>

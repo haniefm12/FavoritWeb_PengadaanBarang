@@ -67,6 +67,9 @@
 				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">
 					<form>
          				<button class="tambahBut" type="submit" formaction="tambah_produk.php">Tambah Product</button>
+					  </form>	
+					  <form>
+         				<button class="tambahBut" type="submit" formaction="">Cetak</button>
       				</form>	
 				</div>
 			</div>
@@ -80,6 +83,7 @@
 						<th scope="col">Jumlah Item</th>
 						<th scope="col">Satuan</th>
 						<th scope="col">Harga Satuan</th>
+						<th> </th>
 					</tr>
 				</thead>
 			<?php
@@ -97,6 +101,7 @@
 					<td style="background: white"><?php echo $hsl['jumlah_item'];?></td>
 					<td style="background: white"><?php echo $hsl['satuan'];?></td>
 					<td style="background: white"><?php echo $hsl['harga_satuan'];?></td>
+					<td style="background: white"> <?php echo"<button><a href='produk_hapus_btn.php?id=$hsl[id_item]'>Hapus</a></button>";?></td>
 				</tr>
 			<?php		
 				}

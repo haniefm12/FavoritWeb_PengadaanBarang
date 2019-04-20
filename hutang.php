@@ -61,8 +61,8 @@
 				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">		
 				</div>
 				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">
-					<form>
-         				<button type="submit" formaction="tambah_supplier.php">Tambah Supplier</button>
+					  <form>
+         				<button type="submit" formaction="">Cetak</button>
       				</form>	
 				</div>
 			</div>
@@ -92,8 +92,12 @@
 				LEFT JOIN product ON purchase_order.id_item = product.id_item
 				LEFT JOIN suppliers ON product.id_supplier = suppliers.id_supplier";
 				$query1= mysqli_query($conn,$sql1);
+				$tot=0;
+				$sis=0; 
   
 				while ($hsl1= mysqli_fetch_assoc($query1)){
+					$tot = $tot + $hsl1['total_tagihan'];
+					$sis = $sis + $hsl1['sisa_tagihan'];
 			?>
 			
 				<tr>
@@ -111,7 +115,20 @@
 				</tr>
 			<?php		
 				}
-			?>	
+			?>
+				<tr>
+					<th style="background: white"> JUMLAH </th>
+					<td style="background: white"> </td>
+					<td style="background: white"> </td>
+					<td style="background: white"> </td>
+					<td style="background: white"> </td>
+					<td style="background: white"> </td>
+					<td style="background: white"> </td>
+					<td style="background: white"> <?php echo "Rp ".$tot.",00"; ?></td>
+					<td style="background: white"> <?php echo "Rp ".$sis.",00";?></td></td>
+					<td style="background: white"> </td>
+
+				</tr>
 			</table> 
 		</div><!-- /container -->
 		<script src="assets/GoogleNexusWebsiteMenu/js/classie.js"></script>

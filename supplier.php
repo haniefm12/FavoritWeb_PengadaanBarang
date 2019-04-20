@@ -62,12 +62,25 @@
 			<header>
 				<h1> <span>Supplier</span></h1>	
 			</header>
+			<?php 
+				$sql1= "SELECT sisa_tagihan FROM suppliers";
+				$query1 = mysqli_query($conn,$sql1);
+				$sisa = 0;
+				while($hsl1=mysqli_fetch_assoc($query1)){
+					$sisa = $sisa + $hsl1['sisa_tagihan'];
+				}
+			?>
 			<div class="head row">
+        			<p class="card-text">Sisa Tagihan Keseluruhan :  Rp <?php echo $sisa.",00" ?> </p>
+     			
 				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">		
 				</div>
 				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">
 					<form>
          				<button class="tambahBut" type="submit" formaction="tambah_supplier.php">Tambah Supplier</button>
+					  </form>	
+					  <form>
+         				<button class="tambahBut" type="submit" formaction="">Cetak</button>
       				</form>	
 				</div>
 			</div>
@@ -81,6 +94,7 @@
 						<th scope="col">Alamat</th>
 						<th scope="col">Nomor Telepon</th>
 						<th scope="col">Sisa Tagihan</th>
+						<th> </th>
 					</tr>
 				</thead>
 			<?php
@@ -95,8 +109,9 @@
 	    			<th style="background: white" scope ="row"><?php echo $hsl['nama_supplier'];?></th>
 					<td style="background: white"><?php echo $hsl['email'];?></td>
 					<td style="background: white"><?php echo $hsl['alamat'];?></td>
-					<td style="background: white"><?php echo $hsl['no_hp'];?></td>
-					<td style="background: white"><?php echo $hsl['sisa_tagihan'];?></td>
+					<td style="background: white"><?php echo "(+62) ".$hsl['no_hp'];?></td>
+					<td style="background: white"><?php echo "Rp ".$hsl['sisa_tagihan'];?></td>
+					<td style="background: white"> <?php echo"<button><a href='supplier_hapus_btn.php?id=$hsl[id_supplier]'>Hapus</a></button>";?></td>
 				</tr>
 			<?php		
 				}

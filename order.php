@@ -57,6 +57,9 @@
 			</header> 
 			<div>
 			<br><br>
+			<form>
+         				<button class="tambahBut" type="submit" formaction="">Cetak</button>
+      				</form>	
 			<table class="table">				
 				<thead class="thead-dark">
 					<tr>

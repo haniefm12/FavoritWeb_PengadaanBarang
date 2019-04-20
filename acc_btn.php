@@ -22,5 +22,12 @@ if (!isset($_SESSION["sukses"]) and !isset($_SESSION["username"]) and !isset($_S
 	$sql3 = "UPDATE suppliers SET suppliers.sisa_tagihan = suppliers.sisa_tagihan+'$result1[2]' WHERE suppliers.id_supplier ='$result1[1]'";
 	mysqli_query($conn,$sql3);
 
+	$sql4 = "SELECT id_item,qty_demand FROM purchase_order WHERE id_demand='$id'";
+	$query4= mysqli_query($conn,$sql4);
+	$result4= mysqli_fetch_array($query4);
+
+	$sql5 = "UPDATE product SET product.jumlah_item = product.jumlah_item + '$result4[1]' WHERE product.id_item = '$result4[0]' ";
+	mysqli_query($conn,$sql5);
+
 	header("location: acc.php");
 ?>
