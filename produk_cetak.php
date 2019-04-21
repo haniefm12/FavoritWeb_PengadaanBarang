@@ -33,7 +33,7 @@
 				echo "	<td>"; echo $hsl1['nama_item'];echo "</td>";
 				echo "	<td>"; echo $hsl1['jumlah_item'];echo "</td>";
 				echo "	<td>"; echo $hsl1['satuan'];echo "</td>";
-                echo "   <td>"; echo $hsl1['harga_satuan'];echo "</td>
+                echo "   <td>"; echo "Rp ".number_format($hsl1['harga_satuan'],2,",",".");echo "</td>
                     </tr>";
                 }
                 echo "</table>";

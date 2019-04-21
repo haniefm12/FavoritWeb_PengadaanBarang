@@ -135,8 +135,8 @@
 					<td style="background: white"><?php echo $hsl3['nama_supplier'];?></td>
 					<td style="background: white"><?php echo $hsl3['qty_demand'];?></td>
 					<td style="background: white"><?php echo $hsl3['satuan'];?></td>
-					<td style="background: white"><?php echo $hsl3['harga_satuan'];?></td>
-					<td style="background: white"><?php echo $hsl3['sum_demand'];?></td>
+					<td style="background: white"><?php echo "Rp ".number_format($hsl3['harga_satuan'],2,",",".");?></td>
+					<td style="background: white"><?php echo "Rp ".number_format($hsl3['sum_demand'],2,",",".");?></td>
 				</tr>
 			<?php		
 				}

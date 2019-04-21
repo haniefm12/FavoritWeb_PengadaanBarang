@@ -31,13 +31,13 @@
 				echo "	<td>"; echo $hsl1['email'];echo "</td>";
 				echo "	<td>"; echo $hsl1['alamat'];echo "</td>";
 				echo "	<td>"; echo $hsl1['no_hp'];echo "</td>";
-				echo "	<td>"; echo $hsl1['sisa_tagihan'];echo "</td>
+				echo "	<td>"; echo "Rp ".number_format($hsl1['sisa_tagihan'],2,",",".");echo "</td>
                     </tr>";$si = $si + $hsl1['sisa_tagihan'];
                 }
                 echo "</table>";
                 
 
-                echo "<br> Tagihan belum dibayar sebesar <strong>Rp ".$si.",00 </strong>";
+                echo "<br> Tagihan belum dibayar sebesar <strong>Rp ".number_format($si,2,",",".")." </strong>";
                 echo "<script> 
 				window.print()
 			</script>";

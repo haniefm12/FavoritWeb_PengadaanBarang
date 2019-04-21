@@ -36,8 +36,8 @@
 				echo "	<td>"; echo $hsl1['nama_supplier'];echo "</td>";
 				echo "	<td>"; echo $hsl1['qty_demand'];echo "</td>";
                 echo "  <td>"; echo $hsl1['satuan'];echo "</td>";
-                echo "  <td>"; echo $hsl1['harga_satuan'];echo "</td>";
-                echo "  <td>"; echo $hsl1['sum_demand'];echo "</td>
+                echo "  <td>"; echo "Rp ".number_format($hsl1['harga_satuan'],2,",",".");echo "</td>";
+                echo "  <td>"; echo "Rp ".number_format($hsl1['sum_demand'],2,",",".");echo "</td>
                     </tr>";
                 }
                 echo "</table>";

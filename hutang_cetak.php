@@ -44,10 +44,10 @@
 				echo "	<td>"; echo $hsl1['nama_supplier'];echo "</td>";
 				echo "	<td>"; echo $hsl1['nama_item'];echo "</td>";
                 echo "	<td>"; echo $hsl1['qty_demand'];echo "</td>";
-                echo "   <td>"; echo $hsl1['harga_satuan'];echo "</td>";
+                echo "   <td>"; echo "Rp ".number_format($hsl1['harga_satuan'],2,",",".");echo "</td>";
 				echo "	<td>"; if($hsl1['paid']==0){echo "Belum Lunas";}else{echo "Lunas";} echo "</td>";
-                echo "   <td>"; echo $hsl1['total_tagihan'];echo "</td>";
-                echo "   <td>"; echo $hsl1['sisa_tagihan'];echo "</td>
+                echo "   <td>"; echo "Rp ".number_format($hsl1['total_tagihan'],2,",",".");echo "</td>";
+                echo "   <td>"; echo "Rp ".number_format($hsl1['sisa_tagihan'],2,",",".");echo "</td>
                     </tr>";
                 }
                 echo "<tr>
@@ -58,8 +58,8 @@
                 <td> </td>
                 <td> </td>
                 <td> JUMLAH</td>
-                <td> Rp ".$tot.",00</td>
-                <td> Rp ".$sis.",00</td></td>
+                <td> Rp ".number_format($tot,2,",",".")."</td>
+                <td> Rp ".number_format($sis,2,",",".")."</td></td>
                 <td> </td>
 
             </tr>";

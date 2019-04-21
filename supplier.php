@@ -85,7 +85,7 @@
 				</div>
 
 				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">		
-					<p style="margin-bottom: 5px;"class="card-text" >Sisa Tagihan Keseluruhan :  Rp <?php echo $sisa.",00" ?> </p>
+					<p style="margin-bottom: 5px;"class="card-text" >Sisa Tagihan Keseluruhan :  Rp <?php echo number_format($sisa,2,",",".") ?> </p>
 				</div>
 			</div>
            
@@ -114,7 +114,7 @@
 					<td style="background: white"><?php echo $hsl['email'];?></td>
 					<td style="background: white"><?php echo $hsl['alamat'];?></td>
 					<td style="background: white"><?php echo "(+62) ".$hsl['no_hp'];?></td>
-					<td style="background: white"><?php echo "Rp ".$hsl['sisa_tagihan'];?></td>
+					<td style="background: white"><?php echo "Rp ".number_format($hsl['sisa_tagihan'],2,",",".");?></td>
 					<td style="background: white"> <?php echo"<button class='actButtonNo'><a class='actText' href='supplier_hapus_btn.php?id=$hsl[id_supplier]'>Hapus</a></button>";?></td>
 				</tr>
 			<?php		

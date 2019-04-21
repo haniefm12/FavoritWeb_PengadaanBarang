@@ -103,7 +103,7 @@
 					<td style="background: white"><?php echo $hsl1['nama_item'];?></td>
 					<td style="background: white"><?php echo $hsl1['jumlah_item'];?></td>
 					<td style="background: white"><?php echo $hsl1['satuan'];?></td>
-					<td style="background: white"><?php echo $hsl1['harga_satuan'];?></td>
+					<td style="background: white"><?php echo "Rp ".number_format($hsl1['harga_satuan'],2,",",".");?></td>
 					<td style="background: white"> <?php echo"<button class='actButtonNo'><a class='actText' href='produk_hapus_btn.php?id=$hsl1[id_item]'>Hapus</a></button>";?></td>
 				</tr>
 			<?php		

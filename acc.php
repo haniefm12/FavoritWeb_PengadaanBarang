@@ -92,8 +92,8 @@
 					<td style="background: white"><?php echo $hsl3['nama_item'];?></td>
 					<td style="background: white"><?php echo $hsl3['nama_supplier'];?></td>
 					<td style="background: white"><?php echo $hsl3['qty_demand'];?></td>
-					<td style="background: white"><?php echo $hsl3['harga_satuan'];?></td>
-					<td style="background: white"><?php echo $hsl3['sum_demand'];?></td>
+					<td style="background: white"><?php echo "Rp ".number_format($hsl3['harga_satuan'],2,",",".");?></td>
+					<td style="background: white"><?php echo "Rp ".number_format($hsl3['sum_demand'],2,",",".");?></td>
 					<td style="background: white"><?php echo"<button class='actButtonYes'><a class='actText' href='acc_btn.php?id=$hsl3[id_demand]'>Accept</a></button>
 				<button class='actButtonNo'><a class='actText' href='acc_dec_btn.php?id=$hsl3[id_demand]'>Decline</a></button></td>";?>
 				</tr>

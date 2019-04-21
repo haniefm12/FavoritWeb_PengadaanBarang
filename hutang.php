@@ -115,10 +115,10 @@
 					<td style="background: white"><?php echo $hsl1['nama_supplier'];?></td>
 					<td style="background: white"><?php echo $hsl1['nama_item'];?></td>
 					<td style="background: white"><?php echo $hsl1['qty_demand']." ".$hsl1['satuan'];?></td>
-					<td style="background: white"><?php echo $hsl1['harga_satuan'];?></td>
+					<td style="background: white"><?php echo "Rp ".number_format($hsl1['harga_satuan'],2,",",".");?></td>
 					<td style="background: white"><?php if($hsl1['paid']==0){echo "Belum Lunas";}else{echo "Lunas";}?></td>
-					<td style="background: white"><?php echo $hsl1['total_tagihan'];?></td>
-					<td style="background: white"><?php echo $hsl1['sisa_tagihan'];?></td>
+					<td style="background: white"><?php echo "Rp ".number_format($hsl1['total_tagihan'],2,",",".");?></td>
+					<td style="background: white"><?php echo "Rp ".number_format($hsl1['sisa_tagihan'],2,",",".");?></td>
 					<td style="background: white"><?php echo"<button class='buttonBayar'><a class='actText' href='hutang_bayar_btn.php?id=$hsl1[id_demand]'>Bayar</a></button>
 				<button class='actButtonNo'><a class='actText' href='hutang_hapus_btn.php?id=$hsl1[id_demand]'>Hapus</a></button></td>";?>
 				</tr>
@@ -133,8 +133,8 @@
 					<td style="background: white"> </td>
 					<td style="background: white"> </td>
 					<td style="background: white"> </td>
-					<td style="background: white"> <?php echo "Rp ".$tot.",00"; ?></td>
-					<td style="background: white"> <?php echo "Rp ".$sis.",00";?></td></td>
+					<td style="background: white"> <?php echo "Rp ".number_format($tot,2,",","."); ?></td>
+					<td style="background: white"> <?php echo "Rp ".number_format($sis,2,",",".");?></td></td>
 					<td style="background: white"> </td>
 
 				</tr>
