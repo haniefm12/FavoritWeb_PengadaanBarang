@@ -34,6 +34,12 @@
 			$result= mysqli_fetch_array($query);
 			$hello = $result[0];
 		}
+		if ($_SESSION["username"] != "owner"){
+			die("<div style='margin-top:200px'>
+				<h1 style='text-align:center;color:red;font-weight:bold'>ANDA TIDAK DI IZINKAN!</h1>
+				<h3 style='text-align:center'>Silahkan kembali <a href='mainmenu.php'>disini</a></h3>
+				</div>");
+		}
 ?>
 		<div class="container" style="width:90%;max-width: none">
 			<ul id="gn-menu" class="gn-menu-main">
@@ -54,7 +60,7 @@
 					</nav>
 				</li>
 				<li><a href='mainMenu.php'>Favorit</a></li>
-				<li><a><span>Hi <?php echo $hello ?>!</span></a></li>
+				<li><a href="password.php"><span>Hi <?php echo $hello ?>!</span></a></li>
 			</ul>
 			<!-- Main Content -->
 			<header>

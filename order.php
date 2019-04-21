@@ -53,7 +53,7 @@
 					</nav>
 				</li>
 				<li><a href='mainMenu.php'>Favorit</a></li>
-				<li><a><span>Hi <?php echo $hello ?>!</span></a></li>
+				<li><a href="password.php"><span>Hi <?php echo $hello ?>!</span></a></li>
 			</ul>
 			<header>
 				<h1> <span>Purchase Order</span></h1>	
