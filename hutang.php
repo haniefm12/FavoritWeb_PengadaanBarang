@@ -65,7 +65,7 @@
 				</div>
 				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">
 					  <form>
-         				<button class="tambahBut" type="submit" formaction="">Cetak</button>
+         				<button class="tambahBut" type="submit" onclick="window.open('hutang_cetak.php')">Cetak</button>
       				</form>	
 				</div>
 			</div>

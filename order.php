@@ -60,7 +60,7 @@
 			</header> 
 			<div>
 			<form>
-         				<button style="float: right;"class="tambahBut" type="submit" formaction="">Cetak</button>
+         				<button style="float: right;"class="tambahBut" type="submit" onclick="window.open('order_cetak.php')">Cetak</button>
       				</form>	
 			<table class="table">				
 				<thead class="thead-dark">

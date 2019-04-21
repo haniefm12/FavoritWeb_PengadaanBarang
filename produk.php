@@ -57,7 +57,7 @@
 					</nav>
 				</li>
 				<li><a href='mainMenu.php'>Favorit</a></li>
-				<li><a><span>Hi <?php echo $hello ?>!</span></a></li>
+				<li><a href="password.php"><span>Hi <?php echo $hello ?>!</span></a></li>
 			</ul>
 			
 			<header>
@@ -69,10 +69,10 @@
 				</div>
 				<div class="col-sm-6 col-md-6 col-xl-6 col-lg-6">
 					<form>
-         				<button class="tambahBut" type="submit" formaction="tambah_produk.php">Tambah Product</button>
+         				<button class="tambahBut" type="submit" formaction="produk_tambah.php">Tambah Product</button>
 					  </form>	
 					  <form>
-         				<button class="tambahBut" type="submit" formaction="">Cetak</button>
+         				<button class="tambahBut" type="submit" onclick="window.open('produk_cetak.php')">Cetak</button>
       				</form>	
 				</div>
 			</div>
@@ -91,20 +91,20 @@
 				</thead>
 			<?php
    
-				$sql= "SELECT product.id_item ,product.nama_item, suppliers.nama_supplier, product.harga_satuan, product.satuan, product.jumlah_item FROM product LEFT JOIN suppliers ON product.id_supplier=suppliers.id_supplier";
-				$query= mysqli_query($conn,$sql);
+				$sql1= "SELECT product.id_item ,product.nama_item, suppliers.nama_supplier, product.harga_satuan, product.satuan, product.jumlah_item FROM product LEFT JOIN suppliers ON product.id_supplier=suppliers.id_supplier";
+				$query1= mysqli_query($conn,$sql1);
   
-				while ($hsl= mysqli_fetch_assoc($query)){
+				while ($hsl1= mysqli_fetch_assoc($query1)){
 			?>
 			
 				<tr>
-	    			<th style="background: white" scope ="row"><?php echo $hsl['id_item'];?></th>
-					<td style="background: white"><?php echo $hsl['nama_supplier'];?></td>
-					<td style="background: white"><?php echo $hsl['nama_item'];?></td>
-					<td style="background: white"><?php echo $hsl['jumlah_item'];?></td>
-					<td style="background: white"><?php echo $hsl['satuan'];?></td>
-					<td style="background: white"><?php echo $hsl['harga_satuan'];?></td>
-					<td style="background: white"> <?php echo"<button class='actButtonNo'><a class='actText' href='produk_hapus_btn.php?id=$hsl[id_item]'>Hapus</a></button>";?></td>
+	    			<th style="background: white" scope ="row"><?php echo $hsl1['id_item'];?></th>
+					<td style="background: white"><?php echo $hsl1['nama_supplier'];?></td>
+					<td style="background: white"><?php echo $hsl1['nama_item'];?></td>
+					<td style="background: white"><?php echo $hsl1['jumlah_item'];?></td>
+					<td style="background: white"><?php echo $hsl1['satuan'];?></td>
+					<td style="background: white"><?php echo $hsl1['harga_satuan'];?></td>
+					<td style="background: white"> <?php echo"<button class='actButtonNo'><a class='actText' href='produk_hapus_btn.php?id=$hsl1[id_item]'>Hapus</a></button>";?></td>
 				</tr>
 			<?php		
 				}
