@@ -18,11 +18,49 @@
 	<div class="main-w3layouts wrapper">
 		<h1>Favorit</h1>
 		<h2 style="text-align:center;font-size: 23px;font-weight: bold">Sistem Pengadaan Barang</h2>
+		
 		<div class="main-agileinfo">
 			<div class="agileits-top">
 				<form action="#" method="post">
+
 					<input class="text" type="text" name="Username" placeholder="Username" required=""><br>
 					<input class="text" type="password" name="password" placeholder="Password" required=""><br>
+					<?php
+	
+					if (isset($_POST['login'])) {
+						session_start();
+						include  'koneksi_model.php';
+
+						$user=$_POST['Username'];
+						$pass=($_POST['password']);
+
+						$sql= "SELECT id_user,username,password FROM user WHERE username='".$user."'";
+						$query= mysqli_query($conn,$sql);
+						#if (!$query) {
+						#	printf("Error: %s\n", mysqli_error($conn));
+						#	exit();
+						#}
+							$result= mysqli_fetch_array($query);
+
+						if (!empty($user || $pass)) {
+						if ($user==$result[1]) {
+						if ($pass==$result[2]) {
+						$_SESSION["sukses"]=1;
+						$_SESSION["username"]=$result[1];
+						$_SESSION["password"]=$result[2];
+						$_SESSION["id_user"]=$result[0];
+						header("location: mainMenu.php");
+					}else{
+						echo "<div class='errorNotif'>Password Salah</div>";
+						}
+					}else{
+						echo "<div class='errorNotif'>Username Salah</div>";
+							}
+						}else{
+							echo "<div class='errorNotif'>tidak boleh kosong</div>";
+							}
+							}
+						?>
 					<input type="submit" name="login" value="LOGIN">
 				</form>
 			</div>
@@ -30,41 +68,6 @@
 	</div>
 	<!-- //main -->
 
-<?php
-	
-	if (isset($_POST['login'])) {
-		session_start();
-		include  'koneksi_model.php';
 
-		$user=$_POST['Username'];
-		$pass=($_POST['password']);
-
-		$sql= "SELECT id_user,username,password FROM user WHERE username='".$user."'";
-		$query= mysqli_query($conn,$sql);
-		#if (!$query) {
-		#	printf("Error: %s\n", mysqli_error($conn));
-		#	exit();
-		#}
-		$result= mysqli_fetch_array($query);
-
-		if (!empty($user || $pass)) {
-			if ($user==$result[1]) {
-				if ($pass==$result[2]) {
-					$_SESSION["sukses"]=1;
-					$_SESSION["username"]=$result[1];
-					$_SESSION["password"]=$result[2];
-					$_SESSION["id_user"]=$result[0];
-					header("location: mainMenu.php");
-				}else{
-					echo "Password Salah";
-					}
-			}else{
-				echo "Username Salah";
-				}
-		}else{
-			echo "tidak boleh kosong";
-			}
-	}
-?>
 </body>
 </html>

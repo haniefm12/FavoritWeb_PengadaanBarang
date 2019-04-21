@@ -14,6 +14,7 @@
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/component.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/mainform.css" />
 		<script src="assets/GoogleNexusWebsiteMenu/js/modernizr.custom.js"></script>
 	</head>
 	<body>
@@ -55,20 +56,21 @@
 				<li><a href="password.php"><span>Hi <?php echo $hello ?>!</span></a></li>
 			</ul>
 			<header>
-				<h1> <span>GANTI PASSWORD</span></h1>
+				<h1 style="text-align:center"> <span>GANTI PASSWORD</span></h1>
             </header> 
-            <div>
-            <form method="POST" enctype="multipart/form-data">
-                <p> MASUKAN PASSOWORD BARU :</p> <input type="password" name="pass">
-            <input type="submit" name="submit" value="Update">   
-        </form>
+            <div style="display:block;text-align:center">
+            <form style="background:#cdcdcd; padding:35px;" class="mainform" method="POST" enctype="multipart/form-data">
+            <input style="width:270px" type="password" name="pass" id="pass" placeholder="New Password" required><br>
+            <input style="width:270px" type="password" name="confirmpass" id="confirmpass" placeholder="Confirm Password" required><br><br>
+            <input style="width:270px" type="submit" name="submit" value="Update">   
+        	</form>
         <?php
         if (isset($_POST['submit'])) {
             include 'koneksi_model.php';
             $pass=$_POST['pass'];
         	$sql1= "UPDATE user SET password='$pass' WHERE username='".$_SESSION['username']."'";
             $query1=mysqli_query($conn,$sql1);
-            echo "<script type='text/javascript'>alert('password berhasil diganti!')</script>";
+            echo "<script type='text/javascript'>alert('Password berhasil diganti!')</script>";
         }
         ?>
 
@@ -78,6 +80,21 @@
 		<script src="assets/GoogleNexusWebsiteMenu/js/gnmenu.js"></script>
 		<script>
 			new gnMenu( document.getElementById( 'gn-menu' ) );
+		</script>
+		<script>
+			var password = document.getElementById("pass")
+  , confirm_password = document.getElementById("confirmpass");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
 		</script>
 
 </body>
