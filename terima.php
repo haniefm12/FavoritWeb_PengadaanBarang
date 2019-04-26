@@ -57,7 +57,7 @@
 				<li><a href="password.php"><span>Hi <?php echo $hello ?>!</span></a></li>
 			</ul>
 			<header>
-				<h1> <span>Purchase Order</span></h1>	
+				<h1> <span>Receiving</span></h1>	
 			</header> 
 			<div>
 			<form>
@@ -73,12 +73,13 @@
 						<th scope="col">Jumlah</th>
 						<th scope="col">Satuan</th>
 						<th scope="col">Harga Satuan</th>
-						<th scope="col">Harga Total</th>
+                        <th scope="col">Harga Total</th>
+                        <th scope="col">Aksi</th>
 					</tr>
 				</thead>
 			<?php
    
-				$sql3= "SELECT purchase_order.id_demand,purchase_order.tgl,product.nama_item,suppliers.nama_supplier,purchase_order.qty_demand,product.satuan,product.harga_satuan,purchase_order.sum_demand FROM purchase_order LEFT JOIN product ON purchase_order.id_item =product.id_item LEFT JOIN suppliers ON product.id_supplier=suppliers.id_supplier WHERE purchase_order.status=1";
+				$sql3= "SELECT purchase_order.id_demand,purchase_order.tgl,product.nama_item,suppliers.nama_supplier,purchase_order.qty_demand,product.satuan,product.harga_satuan,purchase_order.sum_demand FROM purchase_order LEFT JOIN product ON purchase_order.id_item =product.id_item LEFT JOIN suppliers ON product.id_supplier=suppliers.id_supplier WHERE purchase_order.status=1 AND purchase_order.ret_stat=0";
 				$query3= mysqli_query($conn,$sql3);
   
 				while ($hsl3= mysqli_fetch_assoc($query3)){
@@ -92,7 +93,8 @@
 					<td style="background: white"><?php echo $hsl3['qty_demand'];?></td>
 					<td style="background: white"><?php echo $hsl3['satuan'];?></td>
 					<td style="background: white"><?php echo "Rp ".number_format($hsl3['harga_satuan'],2,",",".");?></td>
-					<td style="background: white"><?php echo "Rp ".number_format($hsl3['sum_demand'],2,",",".");?></td>
+                    <td style="background: white"><?php echo "Rp ".number_format($hsl3['sum_demand'],2,",",".");?></td>
+                    <td style="background: white"><?php echo"<button class='buttonBayar'><a class='actText' href='terima_btn.php?id=$hsl3[id_demand]'>Terima</a></button>";?>
 				</tr>
 			<?php		
 				}
