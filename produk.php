@@ -48,6 +48,7 @@
 							<li><a class="gn-icon gn-icon-article" href='request.php'>Purchase Request</a></li>
 								<li><a class="gn-icon gn-icon-help"href='acc.php'>Approval</a></li>
 								<li><a class="gn-icon gn-icon-article" href='order.php'>Purchase Order</a></li>
+								<li><a class="gn-icon gn-icon-download" href='terima.php'>Receiving</a></li>
 								<li><a class="gn-icon gn-icon-earth" href='hutang.php'>Account Payable</a></li>
 								<li><a class="gn-icon gn-icon-archive" href='supplier.php'>Supplier</a></li>
 								<li><a class="gn-icon gn-icon-archive" href='produk.php'>Product</a></li>
@@ -84,8 +85,8 @@
 						<th scope="col">Supplier</th>
 						<th scope="col">Nama Product</th>
 						<th scope="col">Jumlah Item</th>
-						<th scope="col">Satuan</th>
 						<th scope="col">Harga Satuan</th>
+						<th scope="col">Total</th>
 						<th> </th>
 					</tr>
 				</thead>
@@ -93,6 +94,7 @@
    
 				$sql1= "SELECT product.id_item ,product.nama_item, suppliers.nama_supplier, product.harga_satuan, product.satuan, product.jumlah_item FROM product LEFT JOIN suppliers ON product.id_supplier=suppliers.id_supplier";
 				$query1= mysqli_query($conn,$sql1);
+				$tot=0;
   
 				while ($hsl1= mysqli_fetch_assoc($query1)){
 			?>
@@ -101,14 +103,25 @@
 	    			<th style="background: white" scope ="row"><?php echo $hsl1['id_item'];?></th>
 					<td style="background: white"><?php echo $hsl1['nama_supplier'];?></td>
 					<td style="background: white"><?php echo $hsl1['nama_item'];?></td>
-					<td style="background: white"><?php echo $hsl1['jumlah_item'];?></td>
-					<td style="background: white"><?php echo $hsl1['satuan'];?></td>
+					<td style="background: white"><?php echo $hsl1['jumlah_item']." ".$hsl1['satuan'];?></td>
 					<td style="background: white"><?php echo "Rp ".number_format($hsl1['harga_satuan'],2,",",".");?></td>
+					<td style="background: white"><?php $jum=$hsl1['jumlah_item']*$hsl1['harga_satuan'];$tot=$tot+$jum; echo "Rp ".number_format($jum,2,",",".");?></td>
 					<td style="background: white"> <?php echo"<button class='actButtonNo'><a class='actText' href='produk_hapus_btn.php?id=$hsl1[id_item]'>Hapus</a></button>";?></td>
 				</tr>
 			<?php		
 				}
 			?>	
+							<tr>
+					<th style="background: white"> </th>
+					<td style="background: white"> </td>
+					<td style="background: white"> </td>
+					<th style="background: white"> JUMLAH </th>
+					<td style="background: white"> </td>
+					
+					<td style="background: white"> <?php echo "Rp ".number_format($tot,2,",",".");?></td></td>
+					<td style="background: white"> </td>
+
+				</tr>
 			</table>
 			<br>
 			<br>

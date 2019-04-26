@@ -51,6 +51,7 @@
 							<li><a class="gn-icon gn-icon-article" href='request.php'>Purchase Request</a></li>
 								<li><a class="gn-icon gn-icon-help"href='acc.php'>Approval</a></li>
 								<li><a class="gn-icon gn-icon-article" href='order.php'>Purchase Order</a></li>
+								<li><a class="gn-icon gn-icon-download" href='terima.php'>Receiving</a></li>
 								<li><a class="gn-icon gn-icon-earth" href='hutang.php'>Account Payable</a></li>
 								<li><a class="gn-icon gn-icon-archive" href='supplier.php'>Supplier</a></li>
 								<li><a class="gn-icon gn-icon-archive" href='produk.php'>Product</a></li>
