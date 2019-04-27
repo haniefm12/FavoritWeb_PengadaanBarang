@@ -109,23 +109,25 @@
 					$tot = $tot + $hsl1['total_tagihan'];
 					$sis = $sis + $hsl1['sisa_tagihan'];
 			?>
+			<tr>
+                    <th style="background: white" scope ="row"><?php echo $hsl1['tanggal'];?></th>
+                    <td style="background: white"><?php echo $hsl1['id_demand'];?></td>
+                    <td style="background: white"><?php echo $hsl1['nama_supplier'];?></td>
+                    <td style="background: white"><?php echo $hsl1['nama_item'];?></td>
+                    <td style="background: white"><?php echo $hsl1['qty_demand']." ".$hsl1['satuan'];?></td>
+                    <td style="background: white"><?php echo "Rp ".number_format($hsl1['harga_satuan'],2,",",".");?></td>
+                    <td style="background: white"><?php if($hsl1['paid']==0){echo "Belum Lunas";}else{echo "Lunas";}?></td>
+                    <td style="background: white"><?php echo "Rp ".number_format($hsl1['total_tagihan'],2,",",".");?></td>
+                    <td style="background: white"><?php echo "Rp ".number_format($hsl1['sisa_tagihan'],2,",",".");?></td>
+                    <td style="background: white"><?php echo"<button class='buttonBayar'><a class='actText' href='hutang_bayar_btn.php?id=$hsl1[id_demand]'>Bayar</a></button>
+                <button class='actButtonNo'><a class='actText' href='hutang_hapus_btn.php?id=$hsl1[id_demand]'>Hapus</a></button></td>";?>
+                </tr>
+            <?php       
+                }
+            ?>
+
 			
-				<tr>
-					<th style="background: white" scope ="row"><?php echo $hsl1['tanggal'];?></th>
-					<td style="background: white"><?php echo $hsl1['id_demand'];?></td>
-					<td style="background: white"><?php echo $hsl1['nama_supplier'];?></td>
-					<td style="background: white"><?php echo $hsl1['nama_item'];?></td>
-					<td style="background: white"><?php echo $hsl1['qty_demand']." ".$hsl1['satuan'];?></td>
-					<td style="background: white"><?php echo "Rp ".number_format($hsl1['harga_satuan'],2,",",".");?></td>
-					<td style="background: white"><?php if($hsl1['paid']==0){echo "Belum Lunas";}else{echo "Lunas";}?></td>
-					<td style="background: white"><?php echo "Rp ".number_format($hsl1['total_tagihan'],2,",",".");?></td>
-					<td style="background: white"><?php echo "Rp ".number_format($hsl1['sisa_tagihan'],2,",",".");?></td>
-					<td style="background: white"><?php echo"<button class='buttonBayar'><a class='actText' href='hutang_bayar_btn.php?id=$hsl1[id_demand]'>Bayar</a></button>
-				<button class='actButtonNo'><a class='actText' href='hutang_hapus_btn.php?id=$hsl1[id_demand]'>Hapus</a></button></td>";?>
-				</tr>
-			<?php		
-				}
-			?>
+
 				<tr>
 					<th style="background: white"> JUMLAH </th>
 					<td style="background: white"> </td>
@@ -140,6 +142,67 @@
 
 				</tr>
 			</table> 
+			<h2> <span>Retur</span></h2>
+			<table class="table">				
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Tanggal</th>
+						<th scope="col">Nomor</th>
+						<th scope="col">Supplier</th>
+						<th scope="col">Product</th>
+						<th scope="col">Qty Faktur</th>
+						<th scope="col">Qty Retur</th>
+						<th scope="col">Satuan</th>
+						<th scope="col">Harga Satuan</th>
+						<th scope="col">Jumlah</th>
+					</tr>
+				</thead>
+				<?php
+				$jumlah= 0;
+   				$sql2= "SELECT account_payable.tanggal,account_payable.id_demand,suppliers.nama_supplier,product.nama_item,purchase_order.qty_demand, product.satuan,product.harga_satuan,purchase_order.qty_ret,purchase_order.ret_stat 
+				   FROM account_payable 
+				   LEFT JOIN purchase_order ON account_payable.id_demand = purchase_order.id_demand 
+				   LEFT JOIN product ON purchase_order.id_item = product.id_item 
+				   LEFT JOIN suppliers ON product.id_supplier = suppliers.id_supplier 
+				   WHERE purchase_order.status=1 AND purchase_order.ret_stat=1";
+				$query2= mysqli_query($conn,$sql2);
+				
+				while ($hsl2= mysqli_fetch_assoc($query2)){
+			?>
+				<tr>
+					<th style="background: white" scope ="row"><?php echo $hsl2['tanggal'];?></th>
+					<td style="background: white"><?php echo $hsl2['id_demand'];?></td>
+					<td style="background: white"><?php echo $hsl2['nama_supplier'];?></td>
+					<td style="background: white"><?php echo $hsl2['nama_item'];?></td>
+					<td style="background: white"><?php echo $hsl2['qty_demand'];?></td>
+					<td style="background: white"><?php echo $hsl2['qty_ret'];?></td>
+					<td style="background: white"><?php echo $hsl2['satuan'];?></td>
+					<td style="background: white"><?php echo "Rp ".number_format($hsl2['harga_satuan'],2,",",".");?></td>
+					<td style="background: white"><?php $har=$hsl2['harga_satuan']*$hsl2['qty_ret'];echo "Rp ".number_format($har,2,",",".");?></td>
+
+				</tr>
+			<?php
+			$jumlah=$jumlah+$har;		
+				}
+			?>
+
+
+				<tr>
+					<th style="background: white"> JUMLAH RETUR </th>
+					<td style="background: white"> </td>
+					<td style="background: white"> </td>
+					<td style="background: white"> </td>
+					<td style="background: white"> </td>
+					<td style="background: white"> </td>
+					<td style="background: white"> </td>
+					<td style="background: white"> </td>
+					<td style="background: white"> <?php echo "Rp ".number_format($jumlah,2,",","."); ?></td>
+
+				</tr>
+			</table> 
+
+				   
+
 		</div><!-- /container -->
 		<script src="assets/GoogleNexusWebsiteMenu/js/classie.js"></script>
 		<script src="assets/GoogleNexusWebsiteMenu/js/gnmenu.js"></script>
