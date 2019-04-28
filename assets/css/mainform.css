@@ -92,3 +92,7 @@ input, textarea {
 	background: white;
 	float:right;
 }
+
+h6 {
+	font-weight: bold;
+}

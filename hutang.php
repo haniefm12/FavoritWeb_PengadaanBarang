@@ -126,7 +126,7 @@
                 }
             ?>
 			</table> 
-			<div>
+			<div style="display:block;float:right;">
 				<h6>TOTAL : <?php echo "Rp ".number_format($tot,2,",","."); ?></h6>
 				<?php
 				$j=0;
@@ -148,7 +148,7 @@
 				<h6>Sisa Tagihan : <?php echo "Rp ".number_format($sis,2,",","."); ?></h6>
 				<br>
 			</div>
-			<h2> <span>Retur</span></h2>
+			<h2 style="clear:right"> <span>Retur</span></h2>
 			<table class="table">				
 				<thead class="thead-dark">
 					<tr>

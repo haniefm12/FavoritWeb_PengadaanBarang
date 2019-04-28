@@ -16,6 +16,7 @@
 		<link rel="stylesheet" type="text/css" href="assets/GoogleNexusWebsiteMenu/css/component.css" />
 		<script src="assets/GoogleNexusWebsiteMenu/js/modernizr.custom.js"></script>
 		<link rel="stylesheet" type="text/css" href="assets/css/table.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/mainform.css" />
 	</head>
 	<body>
 	<?php
@@ -67,22 +68,22 @@
    $query3= mysqli_query($conn,$sql3);
    $hsl3= mysqli_fetch_assoc($query3);
 ?>
-					<tr>
+					<tr style="background:white">
                         <th scope="col">Id</th> <th>:</th><th><?php echo $hsl3['id_demand'];?> </th>
                     </tr>
-                    <tr>   
+                    <tr style="background:white">   
                         <th scope="col">Tanggal</th><th>:</th><th><?php echo $hsl3['tgl'];?> </th>
                     </tr>
-                    <tr>   
+                    <tr style="background:white">   
                         <th scope="col">Product</th><th>:</th><th><?php echo $hsl3['nama_item'];?> </th>
                     </tr>
-                    <tr>
+                    <tr style="background:white">
                         <th scope="col">Supplier</th><th>:</th><th><?php echo $hsl3['nama_supplier'];?> </th>
                     </tr>
-                    <tr>
+                    <tr style="background:white">
                         <th scope="col">Jumlah</th><th>:</th><th><?php echo $hsl3['qty_demand']." ".$hsl3['satuan'];?> </th>
                         </tr>
-                        <tr>
+                        <tr style="background:white">
                         <th scope="col">Jumlah Diterima</th><th>:</th><th><form method="POST" enctype="multipart/form-data" id="terima">
                         <input style="float:left; margin-left: 0; width:100px" type="number" name="qty_ret" placeholder="" min="0"><?php echo $hsl3['satuan'];?></th>
                     </tr>
