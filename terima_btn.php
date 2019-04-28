@@ -71,19 +71,19 @@
 					<tr style="background:white">
                         <th scope="col">Id</th> <th>:</th><th><?php echo $hsl3['id_demand'];?> </th>
                     </tr>
-                    <tr style="background:white">   
+                    <tr style="background:#f2f3f4;">   
                         <th scope="col">Tanggal</th><th>:</th><th><?php echo $hsl3['tgl'];?> </th>
                     </tr>
                     <tr style="background:white">   
                         <th scope="col">Product</th><th>:</th><th><?php echo $hsl3['nama_item'];?> </th>
                     </tr>
-                    <tr style="background:white">
+                    <tr style="background:#f2f3f4;">
                         <th scope="col">Supplier</th><th>:</th><th><?php echo $hsl3['nama_supplier'];?> </th>
                     </tr>
                     <tr style="background:white">
                         <th scope="col">Jumlah</th><th>:</th><th><?php echo $hsl3['qty_demand']." ".$hsl3['satuan'];?> </th>
                         </tr>
-                        <tr style="background:white">
+                        <tr style="background:#f2f3f4;">
                         <th scope="col">Jumlah Diterima</th><th>:</th><th><form method="POST" enctype="multipart/form-data" id="terima">
                         <input style="float:left; margin-left: 0; width:100px" type="number" name="qty_ret" placeholder="" min="0"><?php echo $hsl3['satuan'];?></th>
                     </tr>

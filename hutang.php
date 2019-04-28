@@ -127,7 +127,8 @@
             ?>
 			</table> 
 			<div style="display:block;float:right;">
-				<h6>TOTAL : <?php echo "Rp ".number_format($tot,2,",","."); ?></h6>
+				<table>
+				<tr><td><h6>TOTAL </h6></td><td><h6>: <?php echo "Rp ".number_format($tot,2,",","."); ?></h6></td></tr>
 				<?php
 				$j=0;
 				$r ="SELECT product.harga_satuan,purchase_order.qty_ret 
@@ -141,12 +142,13 @@
 					$j=$j+$t;
 				}
 				?>
-				<h6>RETUR : <?php echo "Rp ".number_format($j,2,",","."); ?></h6>
-				<h6>____________________________________ -</h6>
-				<h6>JUMLAH : <?php echo "Rp ".number_format($tot-$j,2,",","."); ?></h6>
-				<br>
-				<h6>Sisa Tagihan : <?php echo "Rp ".number_format($sis,2,",","."); ?></h6>
-				<br>
+				<tr><td><h6>RETUR </h6></td><td><h6>: <?php echo "Rp ".number_format($j,2,",","."); ?></h6></td></tr>
+				<tr><td><h6>___________________</h6></td><td><h6>_________________ -</h6></td></tr>
+				<tr><td><h6>JUMLAH </h6></td><td><h6>: <?php echo "Rp ".number_format($tot-$j,2,",","."); ?></h6></td></tr>
+				<tr><td><br></td></tr>
+				<tr><td><h6>Sisa Tagihan </h6></td><td><h6>: <?php echo "Rp ".number_format($sis,2,",","."); ?></h6></td></tr>
+				<tr><td><br></td></tr>
+				</table>
 			</div>
 			<h2 style="clear:right"> <span>Retur</span></h2>
 			<table class="table">				
