@@ -112,10 +112,10 @@
 				}
 			?>	
 							<tr>
-					<th style="background: white"> </th>
-					<td style="background: white"> </td>
-					<td style="background: white"> </td>
 					<th style="background: white"> JUMLAH </th>
+					<td style="background: white"> </td>
+					<td style="background: white"> </td>
+					<th style="background: white"> </th>
 					<td style="background: white"> </td>
 					
 					<td style="background: white"> <?php echo "Rp ".number_format($tot,2,",",".");?></td></td>

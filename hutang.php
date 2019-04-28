@@ -125,23 +125,29 @@
             <?php       
                 }
             ?>
-
-			
-
-				<tr>
-					<th style="background: white"> JUMLAH </th>
-					<td style="background: white"> </td>
-					<td style="background: white"> </td>
-					<td style="background: white"> </td>
-					<td style="background: white"> </td>
-					<td style="background: white"> </td>
-					<td style="background: white"> </td>
-					<td style="background: white"> <?php echo "Rp ".number_format($tot,2,",","."); ?></td>
-					<td style="background: white"> <?php echo "Rp ".number_format($sis,2,",",".");?></td></td>
-					<td style="background: white"> </td>
-
-				</tr>
 			</table> 
+			<div>
+				<h6>TOTAL : <?php echo "Rp ".number_format($tot,2,",","."); ?></h6>
+				<?php
+				$j=0;
+				$r ="SELECT product.harga_satuan,purchase_order.qty_ret 
+				FROM account_payable 
+				LEFT JOIN purchase_order ON account_payable.id_demand = purchase_order.id_demand 
+				LEFt JOIN product ON purchase_order.id_item = product.id_item 
+				WHERE purchase_order.status=1 AND purchase_order.ret_stat=1";
+				$q = mysqli_query($conn,$r);
+				while ($h=mysqli_fetch_array($q)){
+					$t=$h[0]*$h[1];
+					$j=$j+$t;
+				}
+				?>
+				<h6>RETUR : <?php echo "Rp ".number_format($j,2,",","."); ?></h6>
+				<h6>____________________________________ -</h6>
+				<h6>JUMLAH : <?php echo "Rp ".number_format($tot-$j,2,",","."); ?></h6>
+				<br>
+				<h6>Sisa Tagihan : <?php echo "Rp ".number_format($sis,2,",","."); ?></h6>
+				<br>
+			</div>
 			<h2> <span>Retur</span></h2>
 			<table class="table">				
 				<thead class="thead-dark">
@@ -158,6 +164,7 @@
 					</tr>
 				</thead>
 				<?php
+				
 				$jumlah= 0;
    				$sql2= "SELECT account_payable.tanggal,account_payable.id_demand,suppliers.nama_supplier,product.nama_item,purchase_order.qty_demand, product.satuan,product.harga_satuan,purchase_order.qty_ret,purchase_order.ret_stat 
 				   FROM account_payable 

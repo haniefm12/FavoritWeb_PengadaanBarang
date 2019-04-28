@@ -60,9 +60,6 @@
 				<h1> <span>Receiving</span></h1>	
 			</header> 
 			<div>
-			<form>
-         				<button style="float: right;"class="tambahBut" type="submit" onclick="window.open('order_cetak.php')">Cetak</button>
-      				</form>	
 			<table class="table">				
 				<thead class="thead-dark">
 					<tr>
@@ -94,7 +91,7 @@
 					<td style="background: white"><?php echo $hsl3['satuan'];?></td>
 					<td style="background: white"><?php echo "Rp ".number_format($hsl3['harga_satuan'],2,",",".");?></td>
                     <td style="background: white"><?php echo "Rp ".number_format($hsl3['sum_demand'],2,",",".");?></td>
-                    <td style="background: white"><?php echo"<button class='buttonBayar'><a class='actText' href='terima_btn.php?id=$hsl3[id_demand]'>Terima</a></button>";?>
+                    <td style="background: white"><?php echo"<button class='buttonBayar'><a class='actText' href='terima_btn.php?id=$hsl3[id_demand]'>Terima</a></button>";?></td>
 				</tr>
 			<?php		
 				}

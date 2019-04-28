@@ -74,11 +74,12 @@
 						<th scope="col">Satuan</th>
 						<th scope="col">Harga Satuan</th>
 						<th scope="col">Harga Total</th>
+						<th scope="col">Diterima</th>
 					</tr>
 				</thead>
 			<?php
    
-				$sql3= "SELECT purchase_order.id_demand,purchase_order.tgl,product.nama_item,suppliers.nama_supplier,purchase_order.qty_demand,product.satuan,product.harga_satuan,purchase_order.sum_demand FROM purchase_order LEFT JOIN product ON purchase_order.id_item =product.id_item LEFT JOIN suppliers ON product.id_supplier=suppliers.id_supplier WHERE purchase_order.status=1";
+				$sql3= "SELECT purchase_order.id_demand,purchase_order.tgl,purchase_order.ret_stat,product.nama_item,suppliers.nama_supplier,purchase_order.qty_demand,product.satuan,product.harga_satuan,purchase_order.sum_demand FROM purchase_order LEFT JOIN product ON purchase_order.id_item =product.id_item LEFT JOIN suppliers ON product.id_supplier=suppliers.id_supplier WHERE purchase_order.status=1";
 				$query3= mysqli_query($conn,$sql3);
   
 				while ($hsl3= mysqli_fetch_assoc($query3)){
@@ -93,6 +94,7 @@
 					<td style="background: white"><?php echo $hsl3['satuan'];?></td>
 					<td style="background: white"><?php echo "Rp ".number_format($hsl3['harga_satuan'],2,",",".");?></td>
 					<td style="background: white"><?php echo "Rp ".number_format($hsl3['sum_demand'],2,",",".");?></td>
+					<td style="background: white"><?php if($hsl3['ret_stat']==0){echo "Belum Diterima";}else{echo "Diterima" ;}?></td>
 				</tr>
 			<?php		
 				}

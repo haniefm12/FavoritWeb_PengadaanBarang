@@ -11,7 +11,7 @@ if (!isset($_SESSION["sukses"]) and !isset($_SESSION["username"]) and !isset($_S
 
 	$id=$_GET['id'];
 
-	$sql= "UPDATE purchase_order SET purchase_order.status=purchase_order.status+1, WHERE purchase_order.id_demand='$id'";
+	$sql= "UPDATE purchase_order SET purchase_order.status=purchase_order.status+1 WHERE purchase_order.id_demand='$id'";
 	$query= mysqli_query($conn,$sql);
 
 	#$sql1 = "SELECT purchase_order.id_demand,suppliers.id_supplier,purchase_order.sum_demand FROM purchase_order LEFT JOIN product ON purchase_order.id_item =product.id_item LEFT JOIN suppliers ON product.id_supplier=suppliers.id_supplier WHERE purchase_order.id_demand='$id'";
