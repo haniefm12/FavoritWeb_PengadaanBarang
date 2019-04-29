@@ -95,7 +95,7 @@
 				</thead>
 			<?php
    
-				$sql1= "SELECT account_payable.tanggal,account_payable.id_demand,suppliers.nama_supplier,product.nama_item,purchase_order.qty_demand,
+				$sql1= "SELECT account_payable.id_debts,account_payable.tanggal,account_payable.id_demand,suppliers.nama_supplier,product.nama_item,purchase_order.qty_demand,
 				product.satuan,product.harga_satuan,account_payable.paid,account_payable.total_tagihan,account_payable.sisa_tagihan 
 				FROM account_payable 
 				LEFT JOIN purchase_order ON account_payable.id_demand = purchase_order.id_demand

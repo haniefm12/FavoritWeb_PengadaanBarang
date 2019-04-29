@@ -2,8 +2,8 @@
 <html lang="en" class="no-js">
 	<head>
 		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Favorit | Purchase Order</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -35,6 +35,7 @@
 			$hello = $result[0];
 		}
 ?>
+
 		<div class="container">
 			<ul id="gn-menu" class="gn-menu-main">
 				<li class="gn-trigger">
@@ -58,58 +59,58 @@
 				<li><a href="password.php"><span>Hi <?php echo $hello ?>!</span></a></li>
 			</ul>
 			<header>
-				<h1> <span>Receiving</span></h1>	
-			</header> 
+				<h1> <span>Receiving</span></h1>
+			</header>
 			<div>
-			<table class="table">				
+			<table class="table">
                 <?php
    $id=$_GET['id'];
    $sql3= "SELECT purchase_order.id_demand,purchase_order.tgl,product.nama_item,suppliers.nama_supplier,purchase_order.qty_demand,product.satuan,product.harga_satuan,purchase_order.sum_demand FROM purchase_order LEFT JOIN product ON purchase_order.id_item =product.id_item LEFT JOIN suppliers ON product.id_supplier=suppliers.id_supplier WHERE purchase_order.id_demand='$id'";
    $query3= mysqli_query($conn,$sql3);
    $hsl3= mysqli_fetch_assoc($query3);
 ?>
-					<tr style="background:white">
+					<tr>
                         <th scope="col">Id</th> <th>:</th><th><?php echo $hsl3['id_demand'];?> </th>
                     </tr>
-                    <tr style="background:#f2f3f4;">   
+                    <tr>
                         <th scope="col">Tanggal</th><th>:</th><th><?php echo $hsl3['tgl'];?> </th>
                     </tr>
-                    <tr style="background:white">   
+                    <tr>
                         <th scope="col">Product</th><th>:</th><th><?php echo $hsl3['nama_item'];?> </th>
                     </tr>
-                    <tr style="background:#f2f3f4;">
+                    <tr>
                         <th scope="col">Supplier</th><th>:</th><th><?php echo $hsl3['nama_supplier'];?> </th>
                     </tr>
-                    <tr style="background:white">
+                    <tr>
                         <th scope="col">Jumlah</th><th>:</th><th><?php echo $hsl3['qty_demand']." ".$hsl3['satuan'];?> </th>
                         </tr>
-                        <tr style="background:#f2f3f4;">
+                        <tr>
                         <th scope="col">Jumlah Diterima</th><th>:</th><th><form method="POST" enctype="multipart/form-data" id="terima">
-                        <input style="float:left; margin-left: 0; width:100px" type="number" name="qty_ret" placeholder="" min="0"><?php echo $hsl3['satuan'];?></th>
+                        <input style="float:left; margin-left: 0; height:25px; width:75px" type="number" name="qty_ret" placeholder="" min="0"><?php echo $hsl3['satuan'];?></th>
                     </tr>
             </table>
             <input style="float:left; margin-top: 10px" class="submitbut" type="submit" name="terima" value="Diterima"></form>
         <?php
-        
 	if (isset($_POST['terima'])) {
 		include 'koneksi_model.php';
-
         $diterima=$_POST['qty_ret'];
-        
-        
+
         $sql4 ="SELECT purchase_order.qty_demand,purchase_order.qty_ret,product.harga_satuan FROM purchase_order LEFT JOIN product ON purchase_order.id_item =product.id_item WHERE purchase_order.id_demand='$id' ";
         $query4= mysqli_query($conn,$sql4);
         $hsl4= mysqli_fetch_assoc($query4);
+
         $retur = $hsl4['qty_demand']-$diterima;
         $r_price=$hsl4['harga_satuan']*$retur;
+
         $sql5 = "UPDATE purchase_order SET purchase_order.qty_ret=purchase_order.qty_ret+$retur, purchase_order.ret_stat=purchase_order.ret_stat+1 WHERE purchase_order.id_demand='$id' ";
         mysqli_query($conn,$sql5);
 
 	    $sql6 = "SELECT purchase_order.id_demand,suppliers.id_supplier,purchase_order.sum_demand FROM purchase_order LEFT JOIN product ON purchase_order.id_item =product.id_item LEFT JOIN suppliers ON product.id_supplier=suppliers.id_supplier WHERE purchase_order.id_demand='$id'";
 	    $query6= mysqli_query($conn,$sql6);
+
 	    $result1= mysqli_fetch_array($query6);
         $sisa= $result1[2]-$r_price;
-	    $sql7= "INSERT INTO  `account_payable` (`tanggal`, `id_debts`, `id_demand`, `id_supplier`, `total_tagihan`, `sisa_tagihan`, `paid`) 
+	    $sql7= "INSERT INTO  `account_payable` (`tanggal`, `id_debts`, `id_demand`, `id_supplier`, `total_tagihan`, `sisa_tagihan`, `paid`)
 	    VALUES (now(), NULL, $result1[0], $result1[1], $result1[2], $sisa, '0')";
 	    mysqli_query($conn,$sql7);
 
@@ -125,9 +126,7 @@
 
         header('Location: terima.php') ;
     }
-
-        ?>    
-
+        ?>
 			</div>
 		</div><!-- /container -->
 		<script src="assets/GoogleNexusWebsiteMenu/js/classie.js"></script>
